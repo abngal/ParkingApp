@@ -7,9 +7,20 @@ const spaceX = introspect.graphql({
 	url: 'https://spacex-api.fly.dev/graphql/',
 });
 
+// wundergraph.config.ts
+// const local_db = introspect.postgresql({
+// 	apiNamespace: 'db',
+// 	databaseURL: 'postgresql://admin:admin@localhost:54322/example?schema=public',
+//   });
+  
+const pgdb = introspect.postgresql({
+	apiNamespace: 'pgdb',
+	databaseURL: 'postgresql://postgres:cXW6QReJqayzXR8@db.cohgsnixxmysypamfjnd.supabase.co:5432/postgres',
+});
+
 // configureWunderGraph emits the configuration
 configureWunderGraphApplication({
-	apis: [spaceX],
+	apis: [pgdb, spaceX],
 	server,
 	operations,
 	codeGenerators: [
