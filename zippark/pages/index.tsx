@@ -2,13 +2,6 @@ import { NextPage } from 'next';
 import { useMutation, useQuery } from '../lib/react-query';
 
 const Home: NextPage = () => {
-	// const dragons = useQuery({
-	// 	operationName: 'parking/Dragons',
-	// // });
-
-	const vehicletypesAll = useQuery({
-		operationName: 'parking/VehicleTypesAll',
-	});
 
 	const vehicletypes = useQuery({
 		operationName: 'parking/VehicleTypes',
