@@ -1,0 +1,13 @@
+query ParkingRatesActiveAndLatest($where: pgdb_parking_ratesWhereInput!) {
+	pgdb_findManyparking_rates(where: $where}) {
+	# pgdb_findManyparking_rates(where: { ...$where, { is_active: { equals: true} }) {
+	  id 				#pgdb_BigIntFilter
+	  created_at 		#pgdb_DateTimeNullableFilter
+	#   vehicle_id 		#pgdb_BigIntNullableFilter
+	  min_hours 		#pgdb_IntNullableFilter
+	  min_amount 		#pgdb_IntNullableFilter
+	  variable_amount 	#pgdb_IntNullableFilter
+	  is_active 		
+	#   vehicle_types 	#pgdb_Vehicle_typesRelationFilter
+	}
+}

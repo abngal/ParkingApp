@@ -1,0 +1,30 @@
+mutation ($data: pgdb_parking_transactionsUpdateInput!, $where: pgdb_parking_transactionsWhereUniqueInput!) {
+	pgdb_updateOneparking_transactions(data: $data, where: $where){
+		id # pgdb_BigIntFieldUpdateOperationsInput
+		created_at # pgdb_DateTimeFieldUpdateOperationsInput
+		vehicle_plate # pgdb_StringFieldUpdateOperationsInput
+		datetime_in # pgdb_DateTimeFieldUpdateOperationsInput
+		datetime_out # pgdb_NullableDateTimeFieldUpdateOperationsInput
+		amount # pgdb_IntFieldUpdateOperationsInput
+		parking_rate # pgdb_StringFieldUpdateOperationsInput
+		# vehicle_types: pgdb_vehicle_typesUpdateOneRequiredWithoutParking_transactionsInput
+	}
+}
+# mutation
+#   pgdb_updateOneparking_transactions(data: pgdb_parking_transactionsUpdateInput!, where: pgdb_parking_transactionsWhereUniqueInput!): pgdb_parking_transactions
+
+
+# input pgdb_parking_transactionsUpdateInput {
+#   id: pgdb_BigIntFieldUpdateOperationsInput
+#   created_at: pgdb_DateTimeFieldUpdateOperationsInput
+#   vehicle_plate: pgdb_StringFieldUpdateOperationsInput
+#   datetime_in: pgdb_DateTimeFieldUpdateOperationsInput
+#   datetime_out: pgdb_NullableDateTimeFieldUpdateOperationsInput
+#   amount: pgdb_IntFieldUpdateOperationsInput
+#   parking_rate: pgdb_StringFieldUpdateOperationsInput
+#   vehicle_types: pgdb_vehicle_typesUpdateOneRequiredWithoutParking_transactionsInput
+# }
+
+# input pgdb_parking_transactionsWhereUniqueInput {
+#   id: BigInt
+# }

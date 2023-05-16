@@ -1,0 +1,12 @@
+mutation ($data: pgdb_parking_transactionsCreateInput!) {
+	pgdb_createOneparking_transactions(data: $data){
+		id, 				# BigInt
+		amount, 			# Int
+		# created_at, 		# DateTime
+		vehicle_plate, 		# String
+		datetime_in, 		# DateTime
+		datetime_out, 		# DateTime
+		# parking_rate, 		# String
+		# vehicle_types, 		# pgdb_vehicle_typesCreateNestedOneWithoutParking_transactionsInput
+	}
+}

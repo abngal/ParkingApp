@@ -1,0 +1,7 @@
+query VehicleTypes($where: pgdb_vehicle_typesWhereInput) {
+	pgdb_findManyvehicle_types(where: $where) {
+		id
+		code
+		description
+	}
+}
