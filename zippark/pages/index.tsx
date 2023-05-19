@@ -31,9 +31,6 @@ const Home: NextPage = () => {
 		liveQuery: true,
 	});
 
-	// const startParkingTransactionMutation = useMutation({
-	// 	operationName: 'parking/ParkingTransactionStart',
-	// })
 	const startParkingTransactionMutation = useMutation({
 		operationName: 'parking/mutations/StartParking',
 	})
@@ -43,49 +40,6 @@ const Home: NextPage = () => {
 		startParkingTransactionMutation.mutateAsync({
 			vehicleCode: vCode, // '2W'|'4W'
 		});
-
-		// const d = {
-		// 	data: {
-		// 		vehicle_plate: make3Letters() + ' 222',
-	
-		// 		// a) harcoded but will ideally derive from other tables
-		// 			parking_rates: { connect: { id: "2" } },
-		// 			vehicle_types: { connect: { id: "1" } } ,
-		// 			datetime_out: undefined,
-		// 		// 	b) values with defaults
-		// 			// created_at: DateTime, // now()
-		// 			// datetime_in: DateTime,
-		// 		// values to set at finish
-		// 			// amount: undefined,
-		// 	}
-		// }
-		// await startParkingTransactionMutation.mutateAsync(d);
-	}
-
-	// const finishParkingTransactionMutation = useMutation({
-	// 	operationName: 'parking/ParkingTransactionFinish',
-	// })	  
-
-	// async function finishParkingTransaction() {
-	// 	console.log(',,,,,,,');
-	// 	const d = {
-	// 		data: {
-	// 			// amount: 1111
-	// 			amount: { set: 333 }
-	// 			// input pgdb_IntFieldUpdateOperationsInput {
-	// 				// 	set: Int
-	// 				// 	increment: Int
-	// 				// 	decrement: Int
-	// 				// 	multiply: Int
-	// 				// 	divide: Int
-	// 			//   }
-	// 		},
-	// 		where: {
-	// 			id: "1" // { equals: "1" } // todo: don't hardcode id
-	// 		},
-	// 	};
-	// 	await finishParkingTransactionMutation.mutateAsync(d);
-	// }
 
 	const finishParkingTransactionMutation = useMutation({
 		operationName: 'parking/mutations/FinishParking',
