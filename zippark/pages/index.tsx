@@ -40,6 +40,7 @@ const Home: NextPage = () => {
 		startParkingTransactionMutation.mutateAsync({
 			vehicleCode: vCode, // '2W'|'4W'
 		});
+	}
 
 	const finishParkingTransactionMutation = useMutation({
 		operationName: 'parking/mutations/FinishParking',
@@ -102,6 +103,7 @@ const Home: NextPage = () => {
 
 		</div>
 
-);};
+	);
+};
 
 export default Home;
