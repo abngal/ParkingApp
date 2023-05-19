@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@js-temporal/polyfill": "^0.4.3",
+    "@prisma/client": "^4.14.0",
     "@tanstack/react-query": "^4.29.5",
     "@wundergraph/nextjs": "^0.10.18",
     "@wundergraph/react-query": "^0.8.22",

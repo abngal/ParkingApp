@@ -2,7 +2,6 @@ query ParkingTransactions($where: pgdb_parking_transactionsWhereInput!) {
 	pgdb_findManyparking_transactions(where: $where) {
 		id
 		created_at
-		vehicle_code
 		vehicle_plate
 		datetime_in
 		datetime_out

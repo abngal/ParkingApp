@@ -24,23 +24,23 @@ import type { PublicCustomClaims } from "./claims";
 import type {
 	DragonsResponse,
 	DragonsResponseData,
-	ParkingParkingTransactionFinishResponse,
-	ParkingParkingTransactionFinishInput,
-	ParkingParkingTransactionFinishResponseData,
 	ParkingParkingTransactionsResponse,
 	ParkingParkingTransactionsInput,
 	ParkingParkingTransactionsResponseData,
-	ParkingVehicleTypeCodeIdResponse,
-	ParkingVehicleTypeCodeIdInput,
-	ParkingVehicleTypeCodeIdResponseData,
 	ParkingVehicleTypesResponse,
 	ParkingVehicleTypesInput,
 	ParkingVehicleTypesResponseData,
-	ParkingVehicleTypesAllResponse,
-	ParkingVehicleTypesAllResponseData,
+	Parking__OldVehicleTypeCodeIdResponse,
+	Parking__OldVehicleTypeCodeIdInput,
+	Parking__OldVehicleTypeCodeIdResponseData,
+	Parking__OldVehicleTypesAllResponse,
+	Parking__OldVehicleTypesAllResponseData,
 	ParkingMutationsCreateOneParkingTransactionResponse,
 	ParkingMutationsCreateOneParkingTransactionInput,
 	ParkingMutationsCreateOneParkingTransactionResponseData,
+	ParkingMutationsUpdateOneParkingTransactionResponse,
+	ParkingMutationsUpdateOneParkingTransactionInput,
+	ParkingMutationsUpdateOneParkingTransactionResponseData,
 	ParkingQueriesParkingRatesAndRelationsResponse,
 	ParkingQueriesParkingRatesAndRelationsInput,
 	ParkingQueriesParkingRatesAndRelationsResponseData,
@@ -78,31 +78,31 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "b00d9e75",
+	applicationHash: "87628e2f",
 	baseURL: "http://localhost:9991",
-	sdkVersion: "0.154.0",
+	sdkVersion: "0.149.1",
 };
 
 export const operationMetadata: OperationMetadata = {
 	Dragons: {
 		requiresAuthentication: false,
 	},
-	"parking/ParkingTransactionFinish": {
-		requiresAuthentication: false,
-	},
 	"parking/ParkingTransactions": {
-		requiresAuthentication: false,
-	},
-	"parking/VehicleTypeCodeId": {
 		requiresAuthentication: false,
 	},
 	"parking/VehicleTypes": {
 		requiresAuthentication: false,
 	},
-	"parking/VehicleTypesAll": {
+	"parking/__Old/VehicleTypeCodeId": {
+		requiresAuthentication: false,
+	},
+	"parking/__Old/VehicleTypesAll": {
 		requiresAuthentication: false,
 	},
 	"parking/mutations/CreateOneParkingTransaction": {
+		requiresAuthentication: false,
+	},
+	"parking/mutations/UpdateOneParkingTransaction": {
 		requiresAuthentication: false,
 	},
 	"parking/queries/ParkingRatesAndRelations": {
@@ -187,21 +187,21 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"parking/VehicleTypeCodeId": {
-		input: ParkingVehicleTypeCodeIdInput;
-		response: { data?: ParkingVehicleTypeCodeIdResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	"parking/VehicleTypes": {
 		input: ParkingVehicleTypesInput;
 		response: { data?: ParkingVehicleTypesResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"parking/VehicleTypesAll": {
+	"parking/__Old/VehicleTypeCodeId": {
+		input: Parking__OldVehicleTypeCodeIdInput;
+		response: { data?: Parking__OldVehicleTypeCodeIdResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"parking/__Old/VehicleTypesAll": {
 		input?: undefined;
-		response: { data?: ParkingVehicleTypesAllResponse["data"]; error?: ClientOperationErrors };
+		response: { data?: Parking__OldVehicleTypesAllResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -226,14 +226,14 @@ export type Queries = {
 };
 
 export type Mutations = {
-	"parking/ParkingTransactionFinish": {
-		input: ParkingParkingTransactionFinishInput;
-		response: { data?: ParkingParkingTransactionFinishResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"parking/mutations/CreateOneParkingTransaction": {
 		input: ParkingMutationsCreateOneParkingTransactionInput;
 		response: { data?: ParkingMutationsCreateOneParkingTransactionResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+	};
+	"parking/mutations/UpdateOneParkingTransaction": {
+		input: ParkingMutationsUpdateOneParkingTransactionInput;
+		response: { data?: ParkingMutationsUpdateOneParkingTransactionResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"parking/mutations/FinishParking": {
@@ -280,21 +280,21 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"parking/VehicleTypeCodeId": {
-		input: ParkingVehicleTypeCodeIdInput;
-		response: { data?: ParkingVehicleTypeCodeIdResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"parking/VehicleTypes": {
 		input: ParkingVehicleTypesInput;
 		response: { data?: ParkingVehicleTypesResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"parking/VehicleTypesAll": {
+	"parking/__Old/VehicleTypeCodeId": {
+		input: Parking__OldVehicleTypeCodeIdInput;
+		response: { data?: Parking__OldVehicleTypeCodeIdResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"parking/__Old/VehicleTypesAll": {
 		input?: undefined;
-		response: { data?: ParkingVehicleTypesAllResponse["data"]; error?: ClientOperationErrors };
+		response: { data?: Parking__OldVehicleTypesAllResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

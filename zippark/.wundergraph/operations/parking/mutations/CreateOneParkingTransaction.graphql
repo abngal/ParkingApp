@@ -1,6 +1,6 @@
 mutation ($data: pgdb_parking_transactionsCreateInput!) {
 	pgdb_createOneparking_transactions(data: $data){
-		id, 				# BigInt
+		# id, 				# BigInt
 		amount, 			# Int
 		# created_at, 		# DateTime
 		vehicle_plate, 		# String

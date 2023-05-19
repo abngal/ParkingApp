@@ -1,5 +1,12 @@
-import { createOperation, z } from '../../../generated/wundergraph.factory';
 import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill';
+import crypto from "crypto"
+
+import { PrismaClient } from '@prisma/client'
+import { InternalError } from '@wundergraph/sdk/dist/client/errors';
+const prisma = new PrismaClient()
+
+import { createOperation, z } from '../../../generated/wundergraph.factory';
+
 
 function timeDiffToNow(dateTimeStart: string) {
 	/**
@@ -15,6 +22,14 @@ function timeDiffToNow(dateTimeStart: string) {
 	return diffWithDecimalMinutes;
 }
 
+function make3Letters(): string {
+	/*
+		output samples: 'ABC', 'GTX', 'ZCX'
+	*/
+	return crypto.randomUUID().replace(/[0-9-]/g, '').substring(0,3).toUpperCase()
+}
+
+
 export default createOperation.mutation({
 	input: z.object({
 		vehicleCode: z.string(),
@@ -23,37 +38,47 @@ export default createOperation.mutation({
 		console.log("input", input);
 		/**
 		 * Inserts a new parking transaction
-		 * 	- start time is current time
-		 *  - gets the id of the active parking rate first before insert of record
+		 *  - (a) gets the id of the active parking rate first before insert of record
+		 * 	- (b) write the new parking transaction
+		 * 		- start time is current time
 		 */
 
-		const responseVehicleType = await operations.query({ 
-			operationName: 'parking/queries/ParkingRatesAndRelations',
-			input: { where: { 
-				vehicle_types: { is: { code: { equals: input.vehicleCode }  } }, 
-				is_active: { equals: true },
-			}},
+		// (a)
+		const parkingRate = await prisma.parking_rates.findFirst( { 
+			select: { 
+				id: true,
+				is_active: true
+			} ,  
+			where: { 	
+				is_active: true, 
+				vehicle_types: { 
+					is: { code: input.vehicleCode } 
+				} 
+			} 
 		});
-		const [activeParkingRateId] : any|undefined[] = responseVehicleType.data?.pgdb_findManyparking_rates; 
-		// console.log("responseVehicleType.datapgdb_findManyparking_rates:", responseVehicleType.data?.pgdb_findManyparking_rates);
-		console.log("activeParkingRateId", activeParkingRateId);
 
-		// const whereFilter = { where: { id: { equals: "2" }, } };
-		// const parkingTransaction = await operations.query({ 
-		// 	operationName: 'parking/ParkingTransactionsAndRelated',
-		// 	input: whereFilter,
-		// });
-		// const [txn] : any|undefined[] = parkingTransaction.data?.pgdb_findManyparking_transactions 
-		// if (!txn) return { emptyTransaction: true }
+		if (!parkingRate) {
+			throw new InternalError({ message: 'undefined parkingRate'});
+		}
 
-		// let timeDiffInHours: number = timeDiffToNow(txn.datetime_in);
-		// timeDiffInHours = Math.round(timeDiffInHours);
+		// (b)
+		const data = { 
+			vehicle_plate: make3Letters() + ' 222',
+			amount: undefined, // to update on finish of parking
+			parking_rate: parkingRate.id
+		}
 
-		// const totalAmount = txn.parking_rates.min_amount + timeDiffInHours * txn.parking_rates.variable_amount;
+		const newParkingTxn = await prisma.parking_transactions.create({ data: data });
+		if (!newParkingTxn) {
+			throw new InternalError({ message: 'failed to create on parking_transacion'});
+		}
 
-		return {
-			x: 4422,
-			...input,
-		};
+		const result = JSON.stringify(newParkingTxn, (key, value) => { 
+				console.log(key, value)
+				return ['bigint', 'int'].includes(typeof value) ? value.toString() : value 
+			}
+		);
+
+		return JSON.parse(result);
 	},
 });

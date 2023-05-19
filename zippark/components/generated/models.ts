@@ -8,249 +8,18 @@ import type function_UsersUpdate from "../../.wundergraph/operations/users/updat
 import type { ExtractInput, ExtractResponse } from "@wundergraph/sdk/operations";
 import type { OperationErrors } from "./ts-operation-errors";
 
-export interface pgdb_parking_transactionsUpdateInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_DateTimeFieldUpdateOperationsInput;
-	vehicle_plate?: pgdb_StringFieldUpdateOperationsInput;
-	datetime_in?: pgdb_DateTimeFieldUpdateOperationsInput;
-	datetime_out?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	amount?: pgdb_IntFieldUpdateOperationsInput;
-	parking_rates?: pgdb_parking_ratesUpdateOneRequiredWithoutParking_transactionsInput;
-	vehicle_types?: pgdb_vehicle_typesUpdateOneRequiredWithoutParking_transactionsInput;
-}
-
-export interface pgdb_BigIntFieldUpdateOperationsInput {
-	set?: string;
-	increment?: string;
-	decrement?: string;
-	multiply?: string;
-	divide?: string;
-}
-
-export interface pgdb_DateTimeFieldUpdateOperationsInput {
-	set?: string;
-}
-
-export interface pgdb_StringFieldUpdateOperationsInput {
-	set?: string;
-}
-
-export interface pgdb_NullableDateTimeFieldUpdateOperationsInput {
-	set?: string;
-}
-
-export interface pgdb_IntFieldUpdateOperationsInput {
-	set?: number;
-	increment?: number;
-	decrement?: number;
-	multiply?: number;
-	divide?: number;
-}
-
-export interface pgdb_parking_ratesUpdateOneRequiredWithoutParking_transactionsInput {
-	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
-	connectOrCreate?: pgdb_parking_ratesCreateOrConnectWithoutParking_transactionsInput;
-	upsert?: pgdb_parking_ratesUpsertWithoutParking_transactionsInput;
-	connect?: pgdb_parking_ratesWhereUniqueInput;
-	update?: pgdb_parking_ratesUpdateWithoutParking_transactionsInput;
-}
-
-export interface pgdb_parking_ratesCreateWithoutParking_transactionsInput {
-	id?: string;
-	created_at?: string;
-	min_hours?: number;
-	min_amount?: number;
-	variable_amount?: number;
-	is_active?: boolean;
-	vehicle_types?: pgdb_vehicle_typesCreateNestedOneWithoutParking_ratesInput;
-}
-
-export interface pgdb_vehicle_typesCreateNestedOneWithoutParking_ratesInput {
-	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
-	connectOrCreate?: pgdb_vehicle_typesCreateOrConnectWithoutParking_ratesInput;
-	connect?: pgdb_vehicle_typesWhereUniqueInput;
-}
-
-export interface pgdb_vehicle_typesCreateWithoutParking_ratesInput {
-	id?: string;
-	created_at?: string;
-	code?: string;
-	description?: string;
-	parking_transactions?: pgdb_parking_transactionsCreateNestedManyWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_transactionsCreateNestedManyWithoutVehicle_typesInput {
-	create?: pgdb_parking_transactionsCreateWithoutVehicle_typesInput;
-	connectOrCreate?: pgdb_parking_transactionsCreateOrConnectWithoutVehicle_typesInput;
-	createMany?: pgdb_parking_transactionsCreateManyVehicle_typesInputEnvelope;
-	connect?: pgdb_parking_transactionsWhereUniqueInput;
-}
-
-export interface pgdb_parking_transactionsCreateWithoutVehicle_typesInput {
-	id?: string;
-	created_at?: string;
-	vehicle_plate?: string;
-	datetime_in?: string;
-	datetime_out?: string;
-	amount?: number;
-	parking_rates?: pgdb_parking_ratesCreateNestedOneWithoutParking_transactionsInput;
-}
-
-export interface pgdb_parking_ratesCreateNestedOneWithoutParking_transactionsInput {
-	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
-	connectOrCreate?: pgdb_parking_ratesCreateOrConnectWithoutParking_transactionsInput;
-	connect?: pgdb_parking_ratesWhereUniqueInput;
-}
-
-export interface pgdb_parking_ratesCreateOrConnectWithoutParking_transactionsInput {
-	where?: pgdb_parking_ratesWhereUniqueInput;
-	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
-}
-
-export interface pgdb_parking_ratesWhereUniqueInput {
-	id?: string;
-}
-
-export interface pgdb_parking_transactionsCreateOrConnectWithoutVehicle_typesInput {
-	where?: pgdb_parking_transactionsWhereUniqueInput;
-	create?: pgdb_parking_transactionsCreateWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_transactionsWhereUniqueInput {
-	id?: string;
-	vehicle_plate?: string;
-}
-
-export interface pgdb_parking_transactionsCreateManyVehicle_typesInputEnvelope {
-	data?: pgdb_parking_transactionsCreateManyVehicle_typesInput[];
-	skipDuplicates?: boolean;
-}
-
-export interface pgdb_parking_transactionsCreateManyVehicle_typesInput {
-	id?: string;
-	created_at?: string;
-	vehicle_plate?: string;
-	datetime_in?: string;
-	datetime_out?: string;
-	amount?: number;
-	parking_rate?: string;
-}
-
-export interface pgdb_vehicle_typesCreateOrConnectWithoutParking_ratesInput {
-	where?: pgdb_vehicle_typesWhereUniqueInput;
-	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
-}
-
-export interface pgdb_vehicle_typesWhereUniqueInput {
-	id?: string;
-}
-
-export interface pgdb_parking_ratesUpsertWithoutParking_transactionsInput {
-	update?: pgdb_parking_ratesUpdateWithoutParking_transactionsInput;
-	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
-}
-
-export interface pgdb_parking_ratesUpdateWithoutParking_transactionsInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	min_hours?: pgdb_NullableIntFieldUpdateOperationsInput;
-	min_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
-	variable_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
-	is_active?: pgdb_BoolFieldUpdateOperationsInput;
-	vehicle_types?: pgdb_vehicle_typesUpdateOneWithoutParking_ratesInput;
-}
-
-export interface pgdb_NullableIntFieldUpdateOperationsInput {
-	set?: number;
-	increment?: number;
-	decrement?: number;
-	multiply?: number;
-	divide?: number;
-}
-
-export interface pgdb_BoolFieldUpdateOperationsInput {
-	set?: boolean;
-}
-
-export interface pgdb_vehicle_typesUpdateOneWithoutParking_ratesInput {
-	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
-	connectOrCreate?: pgdb_vehicle_typesCreateOrConnectWithoutParking_ratesInput;
-	upsert?: pgdb_vehicle_typesUpsertWithoutParking_ratesInput;
-	disconnect?: boolean;
-	delete?: boolean;
-	connect?: pgdb_vehicle_typesWhereUniqueInput;
-	update?: pgdb_vehicle_typesUpdateWithoutParking_ratesInput;
-}
-
-export interface pgdb_vehicle_typesUpsertWithoutParking_ratesInput {
-	update?: pgdb_vehicle_typesUpdateWithoutParking_ratesInput;
-	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
-}
-
-export interface pgdb_vehicle_typesUpdateWithoutParking_ratesInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	code?: pgdb_NullableStringFieldUpdateOperationsInput;
-	description?: pgdb_NullableStringFieldUpdateOperationsInput;
-	parking_transactions?: pgdb_parking_transactionsUpdateManyWithoutVehicle_typesInput;
-}
-
-export interface pgdb_NullableStringFieldUpdateOperationsInput {
-	set?: string;
-}
-
-export interface pgdb_parking_transactionsUpdateManyWithoutVehicle_typesInput {
-	create?: pgdb_parking_transactionsCreateWithoutVehicle_typesInput;
-	connectOrCreate?: pgdb_parking_transactionsCreateOrConnectWithoutVehicle_typesInput;
-	upsert?: pgdb_parking_transactionsUpsertWithWhereUniqueWithoutVehicle_typesInput;
-	createMany?: pgdb_parking_transactionsCreateManyVehicle_typesInputEnvelope;
-	set?: pgdb_parking_transactionsWhereUniqueInput;
-	disconnect?: pgdb_parking_transactionsWhereUniqueInput;
-	delete?: pgdb_parking_transactionsWhereUniqueInput;
-	connect?: pgdb_parking_transactionsWhereUniqueInput;
-	update?: pgdb_parking_transactionsUpdateWithWhereUniqueWithoutVehicle_typesInput;
-	updateMany?: pgdb_parking_transactionsUpdateManyWithWhereWithoutVehicle_typesInput;
-	deleteMany?: pgdb_parking_transactionsScalarWhereInput;
-}
-
-export interface pgdb_parking_transactionsUpsertWithWhereUniqueWithoutVehicle_typesInput {
-	where?: pgdb_parking_transactionsWhereUniqueInput;
-	update?: pgdb_parking_transactionsUpdateWithoutVehicle_typesInput;
-	create?: pgdb_parking_transactionsCreateWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_transactionsUpdateWithoutVehicle_typesInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_DateTimeFieldUpdateOperationsInput;
-	vehicle_plate?: pgdb_StringFieldUpdateOperationsInput;
-	datetime_in?: pgdb_DateTimeFieldUpdateOperationsInput;
-	datetime_out?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	amount?: pgdb_IntFieldUpdateOperationsInput;
-	parking_rates?: pgdb_parking_ratesUpdateOneRequiredWithoutParking_transactionsInput;
-}
-
-export interface pgdb_parking_transactionsUpdateWithWhereUniqueWithoutVehicle_typesInput {
-	where?: pgdb_parking_transactionsWhereUniqueInput;
-	data?: pgdb_parking_transactionsUpdateWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_transactionsUpdateManyWithWhereWithoutVehicle_typesInput {
-	where?: pgdb_parking_transactionsScalarWhereInput;
-	data?: pgdb_parking_transactionsUpdateManyMutationInput;
-}
-
-export interface pgdb_parking_transactionsScalarWhereInput {
-	AND?: pgdb_parking_transactionsScalarWhereInput;
-	OR?: pgdb_parking_transactionsScalarWhereInput[];
-	NOT?: pgdb_parking_transactionsScalarWhereInput;
+export interface pgdb_parking_transactionsWhereInput {
+	AND?: pgdb_parking_transactionsWhereInput;
+	OR?: pgdb_parking_transactionsWhereInput[];
+	NOT?: pgdb_parking_transactionsWhereInput;
 	id?: pgdb_BigIntFilter;
 	created_at?: pgdb_DateTimeFilter;
-	vehicle_code?: pgdb_BigIntFilter;
 	vehicle_plate?: pgdb_StringFilter;
 	datetime_in?: pgdb_DateTimeFilter;
 	datetime_out?: pgdb_DateTimeNullableFilter;
-	amount?: pgdb_IntFilter;
+	amount?: pgdb_IntNullableFilter;
 	parking_rate?: pgdb_BigIntFilter;
+	parking_rates?: pgdb_Parking_ratesRelationFilter;
 }
 
 export interface pgdb_BigIntFilter {
@@ -348,7 +117,7 @@ export interface pgdb_NestedDateTimeNullableFilter {
 	not?: pgdb_NestedDateTimeNullableFilter;
 }
 
-export interface pgdb_IntFilter {
+export interface pgdb_IntNullableFilter {
 	equals?: number;
 	in?: number[];
 	notIn?: number[];
@@ -356,10 +125,10 @@ export interface pgdb_IntFilter {
 	lte?: number;
 	gt?: number;
 	gte?: number;
-	not?: pgdb_NestedIntFilter;
+	not?: pgdb_NestedIntNullableFilter;
 }
 
-export interface pgdb_NestedIntFilter {
+export interface pgdb_NestedIntNullableFilter {
 	equals?: number;
 	in?: number[];
 	notIn?: number[];
@@ -367,215 +136,18 @@ export interface pgdb_NestedIntFilter {
 	lte?: number;
 	gt?: number;
 	gte?: number;
-	not?: pgdb_NestedIntFilter;
+	not?: pgdb_NestedIntNullableFilter;
 }
 
-export interface pgdb_parking_transactionsUpdateManyMutationInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_DateTimeFieldUpdateOperationsInput;
-	vehicle_plate?: pgdb_StringFieldUpdateOperationsInput;
-	datetime_in?: pgdb_DateTimeFieldUpdateOperationsInput;
-	datetime_out?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	amount?: pgdb_IntFieldUpdateOperationsInput;
+export interface pgdb_Parking_ratesRelationFilter {
+	is?: pgdb_parking_ratesWhereInput;
+	isNot?: pgdb_parking_ratesWhereInput;
 }
 
-export interface pgdb_vehicle_typesUpdateOneRequiredWithoutParking_transactionsInput {
-	create?: pgdb_vehicle_typesCreateWithoutParking_transactionsInput;
-	connectOrCreate?: pgdb_vehicle_typesCreateOrConnectWithoutParking_transactionsInput;
-	upsert?: pgdb_vehicle_typesUpsertWithoutParking_transactionsInput;
-	connect?: pgdb_vehicle_typesWhereUniqueInput;
-	update?: pgdb_vehicle_typesUpdateWithoutParking_transactionsInput;
-}
-
-export interface pgdb_vehicle_typesCreateWithoutParking_transactionsInput {
-	id?: string;
-	created_at?: string;
-	code?: string;
-	description?: string;
-	parking_rates?: pgdb_parking_ratesCreateNestedManyWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_ratesCreateNestedManyWithoutVehicle_typesInput {
-	create?: pgdb_parking_ratesCreateWithoutVehicle_typesInput;
-	connectOrCreate?: pgdb_parking_ratesCreateOrConnectWithoutVehicle_typesInput;
-	createMany?: pgdb_parking_ratesCreateManyVehicle_typesInputEnvelope;
-	connect?: pgdb_parking_ratesWhereUniqueInput;
-}
-
-export interface pgdb_parking_ratesCreateWithoutVehicle_typesInput {
-	id?: string;
-	created_at?: string;
-	min_hours?: number;
-	min_amount?: number;
-	variable_amount?: number;
-	is_active?: boolean;
-	parking_transactions?: pgdb_parking_transactionsCreateNestedManyWithoutParking_ratesInput;
-}
-
-export interface pgdb_parking_transactionsCreateNestedManyWithoutParking_ratesInput {
-	create?: pgdb_parking_transactionsCreateWithoutParking_ratesInput;
-	connectOrCreate?: pgdb_parking_transactionsCreateOrConnectWithoutParking_ratesInput;
-	createMany?: pgdb_parking_transactionsCreateManyParking_ratesInputEnvelope;
-	connect?: pgdb_parking_transactionsWhereUniqueInput;
-}
-
-export interface pgdb_parking_transactionsCreateWithoutParking_ratesInput {
-	id?: string;
-	created_at?: string;
-	vehicle_plate?: string;
-	datetime_in?: string;
-	datetime_out?: string;
-	amount?: number;
-	vehicle_types?: pgdb_vehicle_typesCreateNestedOneWithoutParking_transactionsInput;
-}
-
-export interface pgdb_vehicle_typesCreateNestedOneWithoutParking_transactionsInput {
-	create?: pgdb_vehicle_typesCreateWithoutParking_transactionsInput;
-	connectOrCreate?: pgdb_vehicle_typesCreateOrConnectWithoutParking_transactionsInput;
-	connect?: pgdb_vehicle_typesWhereUniqueInput;
-}
-
-export interface pgdb_vehicle_typesCreateOrConnectWithoutParking_transactionsInput {
-	where?: pgdb_vehicle_typesWhereUniqueInput;
-	create?: pgdb_vehicle_typesCreateWithoutParking_transactionsInput;
-}
-
-export interface pgdb_parking_transactionsCreateOrConnectWithoutParking_ratesInput {
-	where?: pgdb_parking_transactionsWhereUniqueInput;
-	create?: pgdb_parking_transactionsCreateWithoutParking_ratesInput;
-}
-
-export interface pgdb_parking_transactionsCreateManyParking_ratesInputEnvelope {
-	data?: pgdb_parking_transactionsCreateManyParking_ratesInput[];
-	skipDuplicates?: boolean;
-}
-
-export interface pgdb_parking_transactionsCreateManyParking_ratesInput {
-	id?: string;
-	created_at?: string;
-	vehicle_code?: string;
-	vehicle_plate?: string;
-	datetime_in?: string;
-	datetime_out?: string;
-	amount?: number;
-}
-
-export interface pgdb_parking_ratesCreateOrConnectWithoutVehicle_typesInput {
-	where?: pgdb_parking_ratesWhereUniqueInput;
-	create?: pgdb_parking_ratesCreateWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_ratesCreateManyVehicle_typesInputEnvelope {
-	data?: pgdb_parking_ratesCreateManyVehicle_typesInput[];
-	skipDuplicates?: boolean;
-}
-
-export interface pgdb_parking_ratesCreateManyVehicle_typesInput {
-	id?: string;
-	created_at?: string;
-	min_hours?: number;
-	min_amount?: number;
-	variable_amount?: number;
-	is_active?: boolean;
-}
-
-export interface pgdb_vehicle_typesUpsertWithoutParking_transactionsInput {
-	update?: pgdb_vehicle_typesUpdateWithoutParking_transactionsInput;
-	create?: pgdb_vehicle_typesCreateWithoutParking_transactionsInput;
-}
-
-export interface pgdb_vehicle_typesUpdateWithoutParking_transactionsInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	code?: pgdb_NullableStringFieldUpdateOperationsInput;
-	description?: pgdb_NullableStringFieldUpdateOperationsInput;
-	parking_rates?: pgdb_parking_ratesUpdateManyWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_ratesUpdateManyWithoutVehicle_typesInput {
-	create?: pgdb_parking_ratesCreateWithoutVehicle_typesInput;
-	connectOrCreate?: pgdb_parking_ratesCreateOrConnectWithoutVehicle_typesInput;
-	upsert?: pgdb_parking_ratesUpsertWithWhereUniqueWithoutVehicle_typesInput;
-	createMany?: pgdb_parking_ratesCreateManyVehicle_typesInputEnvelope;
-	set?: pgdb_parking_ratesWhereUniqueInput;
-	disconnect?: pgdb_parking_ratesWhereUniqueInput;
-	delete?: pgdb_parking_ratesWhereUniqueInput;
-	connect?: pgdb_parking_ratesWhereUniqueInput;
-	update?: pgdb_parking_ratesUpdateWithWhereUniqueWithoutVehicle_typesInput;
-	updateMany?: pgdb_parking_ratesUpdateManyWithWhereWithoutVehicle_typesInput;
-	deleteMany?: pgdb_parking_ratesScalarWhereInput;
-}
-
-export interface pgdb_parking_ratesUpsertWithWhereUniqueWithoutVehicle_typesInput {
-	where?: pgdb_parking_ratesWhereUniqueInput;
-	update?: pgdb_parking_ratesUpdateWithoutVehicle_typesInput;
-	create?: pgdb_parking_ratesCreateWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_ratesUpdateWithoutVehicle_typesInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	min_hours?: pgdb_NullableIntFieldUpdateOperationsInput;
-	min_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
-	variable_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
-	is_active?: pgdb_BoolFieldUpdateOperationsInput;
-	parking_transactions?: pgdb_parking_transactionsUpdateManyWithoutParking_ratesInput;
-}
-
-export interface pgdb_parking_transactionsUpdateManyWithoutParking_ratesInput {
-	create?: pgdb_parking_transactionsCreateWithoutParking_ratesInput;
-	connectOrCreate?: pgdb_parking_transactionsCreateOrConnectWithoutParking_ratesInput;
-	upsert?: pgdb_parking_transactionsUpsertWithWhereUniqueWithoutParking_ratesInput;
-	createMany?: pgdb_parking_transactionsCreateManyParking_ratesInputEnvelope;
-	set?: pgdb_parking_transactionsWhereUniqueInput;
-	disconnect?: pgdb_parking_transactionsWhereUniqueInput;
-	delete?: pgdb_parking_transactionsWhereUniqueInput;
-	connect?: pgdb_parking_transactionsWhereUniqueInput;
-	update?: pgdb_parking_transactionsUpdateWithWhereUniqueWithoutParking_ratesInput;
-	updateMany?: pgdb_parking_transactionsUpdateManyWithWhereWithoutParking_ratesInput;
-	deleteMany?: pgdb_parking_transactionsScalarWhereInput;
-}
-
-export interface pgdb_parking_transactionsUpsertWithWhereUniqueWithoutParking_ratesInput {
-	where?: pgdb_parking_transactionsWhereUniqueInput;
-	update?: pgdb_parking_transactionsUpdateWithoutParking_ratesInput;
-	create?: pgdb_parking_transactionsCreateWithoutParking_ratesInput;
-}
-
-export interface pgdb_parking_transactionsUpdateWithoutParking_ratesInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_DateTimeFieldUpdateOperationsInput;
-	vehicle_plate?: pgdb_StringFieldUpdateOperationsInput;
-	datetime_in?: pgdb_DateTimeFieldUpdateOperationsInput;
-	datetime_out?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	amount?: pgdb_IntFieldUpdateOperationsInput;
-	vehicle_types?: pgdb_vehicle_typesUpdateOneRequiredWithoutParking_transactionsInput;
-}
-
-export interface pgdb_parking_transactionsUpdateWithWhereUniqueWithoutParking_ratesInput {
-	where?: pgdb_parking_transactionsWhereUniqueInput;
-	data?: pgdb_parking_transactionsUpdateWithoutParking_ratesInput;
-}
-
-export interface pgdb_parking_transactionsUpdateManyWithWhereWithoutParking_ratesInput {
-	where?: pgdb_parking_transactionsScalarWhereInput;
-	data?: pgdb_parking_transactionsUpdateManyMutationInput;
-}
-
-export interface pgdb_parking_ratesUpdateWithWhereUniqueWithoutVehicle_typesInput {
-	where?: pgdb_parking_ratesWhereUniqueInput;
-	data?: pgdb_parking_ratesUpdateWithoutVehicle_typesInput;
-}
-
-export interface pgdb_parking_ratesUpdateManyWithWhereWithoutVehicle_typesInput {
-	where?: pgdb_parking_ratesScalarWhereInput;
-	data?: pgdb_parking_ratesUpdateManyMutationInput;
-}
-
-export interface pgdb_parking_ratesScalarWhereInput {
-	AND?: pgdb_parking_ratesScalarWhereInput;
-	OR?: pgdb_parking_ratesScalarWhereInput[];
-	NOT?: pgdb_parking_ratesScalarWhereInput;
+export interface pgdb_parking_ratesWhereInput {
+	AND?: pgdb_parking_ratesWhereInput;
+	OR?: pgdb_parking_ratesWhereInput[];
+	NOT?: pgdb_parking_ratesWhereInput;
 	id?: pgdb_BigIntFilter;
 	created_at?: pgdb_DateTimeNullableFilter;
 	vehicle_id?: pgdb_BigIntNullableFilter;
@@ -583,6 +155,8 @@ export interface pgdb_parking_ratesScalarWhereInput {
 	min_amount?: pgdb_IntNullableFilter;
 	variable_amount?: pgdb_IntNullableFilter;
 	is_active?: pgdb_BoolFilter;
+	vehicle_types?: pgdb_Vehicle_typesRelationFilter;
+	parking_transactions?: pgdb_Parking_transactionsListRelationFilter;
 }
 
 export interface pgdb_BigIntNullableFilter {
@@ -607,28 +181,6 @@ export interface pgdb_NestedBigIntNullableFilter {
 	not?: pgdb_NestedBigIntNullableFilter;
 }
 
-export interface pgdb_IntNullableFilter {
-	equals?: number;
-	in?: number[];
-	notIn?: number[];
-	lt?: number;
-	lte?: number;
-	gt?: number;
-	gte?: number;
-	not?: pgdb_NestedIntNullableFilter;
-}
-
-export interface pgdb_NestedIntNullableFilter {
-	equals?: number;
-	in?: number[];
-	notIn?: number[];
-	lt?: number;
-	lte?: number;
-	gt?: number;
-	gte?: number;
-	not?: pgdb_NestedIntNullableFilter;
-}
-
 export interface pgdb_BoolFilter {
 	equals?: boolean;
 	not?: pgdb_NestedBoolFilter;
@@ -637,51 +189,6 @@ export interface pgdb_BoolFilter {
 export interface pgdb_NestedBoolFilter {
 	equals?: boolean;
 	not?: pgdb_NestedBoolFilter;
-}
-
-export interface pgdb_parking_ratesUpdateManyMutationInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
-	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
-	min_hours?: pgdb_NullableIntFieldUpdateOperationsInput;
-	min_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
-	variable_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
-	is_active?: pgdb_BoolFieldUpdateOperationsInput;
-}
-
-export interface pgdb_parking_transactionsWhereInput {
-	AND?: pgdb_parking_transactionsWhereInput;
-	OR?: pgdb_parking_transactionsWhereInput[];
-	NOT?: pgdb_parking_transactionsWhereInput;
-	id?: pgdb_BigIntFilter;
-	created_at?: pgdb_DateTimeFilter;
-	vehicle_code?: pgdb_BigIntFilter;
-	vehicle_plate?: pgdb_StringFilter;
-	datetime_in?: pgdb_DateTimeFilter;
-	datetime_out?: pgdb_DateTimeNullableFilter;
-	amount?: pgdb_IntFilter;
-	parking_rate?: pgdb_BigIntFilter;
-	parking_rates?: pgdb_Parking_ratesRelationFilter;
-	vehicle_types?: pgdb_Vehicle_typesRelationFilter;
-}
-
-export interface pgdb_Parking_ratesRelationFilter {
-	is?: pgdb_parking_ratesWhereInput;
-	isNot?: pgdb_parking_ratesWhereInput;
-}
-
-export interface pgdb_parking_ratesWhereInput {
-	AND?: pgdb_parking_ratesWhereInput;
-	OR?: pgdb_parking_ratesWhereInput[];
-	NOT?: pgdb_parking_ratesWhereInput;
-	id?: pgdb_BigIntFilter;
-	created_at?: pgdb_DateTimeNullableFilter;
-	vehicle_id?: pgdb_BigIntNullableFilter;
-	min_hours?: pgdb_IntNullableFilter;
-	min_amount?: pgdb_IntNullableFilter;
-	variable_amount?: pgdb_IntNullableFilter;
-	is_active?: pgdb_BoolFilter;
-	vehicle_types?: pgdb_Vehicle_typesRelationFilter;
-	parking_transactions?: pgdb_Parking_transactionsListRelationFilter;
 }
 
 export interface pgdb_Vehicle_typesRelationFilter {
@@ -698,7 +205,6 @@ export interface pgdb_vehicle_typesWhereInput {
 	code?: pgdb_StringNullableFilter;
 	description?: pgdb_StringNullableFilter;
 	parking_rates?: pgdb_Parking_ratesListRelationFilter;
-	parking_transactions?: pgdb_Parking_transactionsListRelationFilter;
 }
 
 export interface pgdb_StringNullableFilter {
@@ -750,7 +256,149 @@ export interface pgdb_parking_transactionsCreateInput {
 	datetime_out?: string;
 	amount?: number;
 	parking_rates: pgdb_parking_ratesCreateNestedOneWithoutParking_transactionsInput;
-	vehicle_types: pgdb_vehicle_typesCreateNestedOneWithoutParking_transactionsInput;
+}
+
+export interface pgdb_parking_ratesCreateNestedOneWithoutParking_transactionsInput {
+	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
+	connectOrCreate?: pgdb_parking_ratesCreateOrConnectWithoutParking_transactionsInput;
+	connect?: pgdb_parking_ratesWhereUniqueInput;
+}
+
+export interface pgdb_parking_ratesCreateWithoutParking_transactionsInput {
+	id?: string;
+	created_at?: string;
+	min_hours?: number;
+	min_amount?: number;
+	variable_amount?: number;
+	is_active?: boolean;
+	vehicle_types?: pgdb_vehicle_typesCreateNestedOneWithoutParking_ratesInput;
+}
+
+export interface pgdb_vehicle_typesCreateNestedOneWithoutParking_ratesInput {
+	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
+	connectOrCreate?: pgdb_vehicle_typesCreateOrConnectWithoutParking_ratesInput;
+	connect?: pgdb_vehicle_typesWhereUniqueInput;
+}
+
+export interface pgdb_vehicle_typesCreateWithoutParking_ratesInput {
+	id?: string;
+	created_at?: string;
+	code?: string;
+	description?: string;
+}
+
+export interface pgdb_vehicle_typesCreateOrConnectWithoutParking_ratesInput {
+	where?: pgdb_vehicle_typesWhereUniqueInput;
+	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
+}
+
+export interface pgdb_vehicle_typesWhereUniqueInput {
+	id?: string;
+}
+
+export interface pgdb_parking_ratesCreateOrConnectWithoutParking_transactionsInput {
+	where?: pgdb_parking_ratesWhereUniqueInput;
+	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
+}
+
+export interface pgdb_parking_ratesWhereUniqueInput {
+	id?: string;
+}
+
+export interface pgdb_parking_transactionsUpdateInput {
+	id?: pgdb_BigIntFieldUpdateOperationsInput;
+	created_at?: pgdb_DateTimeFieldUpdateOperationsInput;
+	vehicle_plate?: pgdb_StringFieldUpdateOperationsInput;
+	datetime_in?: pgdb_DateTimeFieldUpdateOperationsInput;
+	datetime_out?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
+	amount?: pgdb_NullableIntFieldUpdateOperationsInput;
+	parking_rates?: pgdb_parking_ratesUpdateOneRequiredWithoutParking_transactionsInput;
+}
+
+export interface pgdb_BigIntFieldUpdateOperationsInput {
+	set?: string;
+	increment?: string;
+	decrement?: string;
+	multiply?: string;
+	divide?: string;
+}
+
+export interface pgdb_DateTimeFieldUpdateOperationsInput {
+	set?: string;
+}
+
+export interface pgdb_StringFieldUpdateOperationsInput {
+	set?: string;
+}
+
+export interface pgdb_NullableDateTimeFieldUpdateOperationsInput {
+	set?: string;
+}
+
+export interface pgdb_NullableIntFieldUpdateOperationsInput {
+	set?: number;
+	increment?: number;
+	decrement?: number;
+	multiply?: number;
+	divide?: number;
+}
+
+export interface pgdb_parking_ratesUpdateOneRequiredWithoutParking_transactionsInput {
+	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
+	connectOrCreate?: pgdb_parking_ratesCreateOrConnectWithoutParking_transactionsInput;
+	upsert?: pgdb_parking_ratesUpsertWithoutParking_transactionsInput;
+	connect?: pgdb_parking_ratesWhereUniqueInput;
+	update?: pgdb_parking_ratesUpdateWithoutParking_transactionsInput;
+}
+
+export interface pgdb_parking_ratesUpsertWithoutParking_transactionsInput {
+	update?: pgdb_parking_ratesUpdateWithoutParking_transactionsInput;
+	create?: pgdb_parking_ratesCreateWithoutParking_transactionsInput;
+}
+
+export interface pgdb_parking_ratesUpdateWithoutParking_transactionsInput {
+	id?: pgdb_BigIntFieldUpdateOperationsInput;
+	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
+	min_hours?: pgdb_NullableIntFieldUpdateOperationsInput;
+	min_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
+	variable_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
+	is_active?: pgdb_BoolFieldUpdateOperationsInput;
+	vehicle_types?: pgdb_vehicle_typesUpdateOneWithoutParking_ratesInput;
+}
+
+export interface pgdb_BoolFieldUpdateOperationsInput {
+	set?: boolean;
+}
+
+export interface pgdb_vehicle_typesUpdateOneWithoutParking_ratesInput {
+	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
+	connectOrCreate?: pgdb_vehicle_typesCreateOrConnectWithoutParking_ratesInput;
+	upsert?: pgdb_vehicle_typesUpsertWithoutParking_ratesInput;
+	disconnect?: boolean;
+	delete?: boolean;
+	connect?: pgdb_vehicle_typesWhereUniqueInput;
+	update?: pgdb_vehicle_typesUpdateWithoutParking_ratesInput;
+}
+
+export interface pgdb_vehicle_typesUpsertWithoutParking_ratesInput {
+	update?: pgdb_vehicle_typesUpdateWithoutParking_ratesInput;
+	create?: pgdb_vehicle_typesCreateWithoutParking_ratesInput;
+}
+
+export interface pgdb_vehicle_typesUpdateWithoutParking_ratesInput {
+	id?: pgdb_BigIntFieldUpdateOperationsInput;
+	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
+	code?: pgdb_NullableStringFieldUpdateOperationsInput;
+	description?: pgdb_NullableStringFieldUpdateOperationsInput;
+}
+
+export interface pgdb_NullableStringFieldUpdateOperationsInput {
+	set?: string;
+}
+
+export interface pgdb_parking_transactionsWhereUniqueInput {
+	id?: string;
+	vehicle_plate?: string;
 }
 
 export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>;
@@ -758,25 +406,25 @@ export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue
 export type JSONObject = { [key: string]: JSONValue };
 import type { GraphQLError } from "@wundergraph/sdk/client";
 
-export interface ParkingParkingTransactionFinishInput {
-	data: pgdb_parking_transactionsUpdateInput;
-	where: pgdb_parking_transactionsWhereUniqueInput;
-}
-
 export interface ParkingParkingTransactionsInput {
 	where: pgdb_parking_transactionsWhereInput;
-}
-
-export interface ParkingVehicleTypeCodeIdInput {
-	vehicleCode?: string;
 }
 
 export interface ParkingVehicleTypesInput {
 	where?: pgdb_vehicle_typesWhereInput;
 }
 
+export interface Parking__OldVehicleTypeCodeIdInput {
+	vehicleCode?: string;
+}
+
 export interface ParkingMutationsCreateOneParkingTransactionInput {
 	data: pgdb_parking_transactionsCreateInput;
+}
+
+export interface ParkingMutationsUpdateOneParkingTransactionInput {
+	data: pgdb_parking_transactionsUpdateInput;
+	where: pgdb_parking_transactionsWhereUniqueInput;
 }
 
 export interface ParkingQueriesParkingRatesAndRelationsInput {
@@ -797,83 +445,83 @@ export type UsersSubscribeInput = ExtractInput<typeof function_UsersSubscribe>;
 
 export type UsersUpdateInput = ExtractInput<typeof function_UsersUpdate>;
 
-export interface ParkingParkingTransactionFinishInputInternal {
+export interface InternalParkingParkingTransactionsInput {
+	where: pgdb_parking_transactionsWhereInput;
+}
+
+export interface InternalParkingVehicleTypesInput {
+	where?: pgdb_vehicle_typesWhereInput;
+}
+
+export interface InternalParking__OldVehicleTypeCodeIdInput {
+	vehicleCode?: string;
+}
+
+export interface InternalParkingMutationsCreateOneParkingTransactionInput {
+	data: pgdb_parking_transactionsCreateInput;
+}
+
+export interface InternalParkingMutationsUpdateOneParkingTransactionInput {
 	data: pgdb_parking_transactionsUpdateInput;
 	where: pgdb_parking_transactionsWhereUniqueInput;
 }
 
-export interface ParkingParkingTransactionsInputInternal {
-	where: pgdb_parking_transactionsWhereInput;
-}
-
-export interface ParkingVehicleTypeCodeIdInputInternal {
-	vehicleCode?: string;
-}
-
-export interface ParkingVehicleTypesInputInternal {
-	where?: pgdb_vehicle_typesWhereInput;
-}
-
-export interface ParkingMutationsCreateOneParkingTransactionInputInternal {
-	data: pgdb_parking_transactionsCreateInput;
-}
-
-export interface ParkingQueriesParkingRatesAndRelationsInputInternal {
+export interface InternalParkingQueriesParkingRatesAndRelationsInput {
 	where: pgdb_parking_ratesWhereInput;
 }
 
-export interface ParkingQueriesParkingTransactionsAndRelationsInputInternal {
+export interface InternalParkingQueriesParkingTransactionsAndRelationsInput {
 	where: pgdb_parking_transactionsWhereInput;
 }
 
-export interface ParkingMutationsFinishParkingInputInternal {
+export interface InternalParkingMutationsFinishParkingInput {
 	parkingTransactionId: string;
 }
 
-export interface ParkingMutationsStartParkingInputInternal {
+export interface InternalParkingMutationsStartParkingInput {
 	vehicleCode: string;
 }
 
-export interface UsersGetInputInternal {
+export interface InternalUsersGetInput {
 	id: string;
 }
 
-export interface UsersSubscribeInputInternal {
+export interface InternalUsersSubscribeInput {
 	id: string;
 }
 
-export interface UsersUpdateInputInternal {
+export interface InternalUsersUpdateInput {
 	id: string;
 	name: string;
 	bio: string;
 }
 
-export interface ParkingParkingTransactionFinishInputInjected {
+export interface InjectedParkingParkingTransactionsInput {
+	where: pgdb_parking_transactionsWhereInput;
+}
+
+export interface InjectedParkingVehicleTypesInput {
+	where?: pgdb_vehicle_typesWhereInput;
+}
+
+export interface InjectedParking__OldVehicleTypeCodeIdInput {
+	vehicleCode?: string;
+}
+
+export interface InjectedParkingMutationsCreateOneParkingTransactionInput {
+	data: pgdb_parking_transactionsCreateInput;
+}
+
+export interface InjectedParkingMutationsUpdateOneParkingTransactionInput {
 	data: pgdb_parking_transactionsUpdateInput;
 	where: pgdb_parking_transactionsWhereUniqueInput;
 }
 
-export interface ParkingParkingTransactionsInputInjected {
-	where: pgdb_parking_transactionsWhereInput;
-}
-
-export interface ParkingVehicleTypeCodeIdInputInjected {
-	vehicleCode?: string;
-}
-
-export interface ParkingVehicleTypesInputInjected {
-	where?: pgdb_vehicle_typesWhereInput;
-}
-
-export interface ParkingMutationsCreateOneParkingTransactionInputInjected {
-	data: pgdb_parking_transactionsCreateInput;
-}
-
-export interface ParkingQueriesParkingRatesAndRelationsInputInjected {
+export interface InjectedParkingQueriesParkingRatesAndRelationsInput {
 	where: pgdb_parking_ratesWhereInput;
 }
 
-export interface ParkingQueriesParkingTransactionsAndRelationsInputInjected {
+export interface InjectedParkingQueriesParkingTransactionsAndRelationsInput {
 	where: pgdb_parking_transactionsWhereInput;
 }
 
@@ -882,18 +530,8 @@ export interface DragonsResponse {
 	errors?: GraphQLError[];
 }
 
-export interface ParkingParkingTransactionFinishResponse {
-	data?: ParkingParkingTransactionFinishResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface ParkingParkingTransactionsResponse {
 	data?: ParkingParkingTransactionsResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface ParkingVehicleTypeCodeIdResponse {
-	data?: ParkingVehicleTypeCodeIdResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -902,13 +540,23 @@ export interface ParkingVehicleTypesResponse {
 	errors?: GraphQLError[];
 }
 
-export interface ParkingVehicleTypesAllResponse {
-	data?: ParkingVehicleTypesAllResponseData;
+export interface Parking__OldVehicleTypeCodeIdResponse {
+	data?: Parking__OldVehicleTypeCodeIdResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface Parking__OldVehicleTypesAllResponse {
+	data?: Parking__OldVehicleTypesAllResponseData;
 	errors?: GraphQLError[];
 }
 
 export interface ParkingMutationsCreateOneParkingTransactionResponse {
 	data?: ParkingMutationsCreateOneParkingTransactionResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface ParkingMutationsUpdateOneParkingTransactionResponse {
+	data?: ParkingMutationsUpdateOneParkingTransactionResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -955,37 +603,16 @@ export interface DragonsResponseData {
 	}[];
 }
 
-export interface ParkingParkingTransactionFinishResponseData {
-	pgdb_updateOneparking_transactions?: {
-		id: string;
-		created_at: string;
-		vehicle_plate: string;
-		datetime_in: string;
-		datetime_out?: string;
-		amount: number;
-		parking_rate: string;
-	};
-}
-
 export interface ParkingParkingTransactionsResponseData {
 	pgdb_findManyparking_transactions: {
 		id: string;
 		created_at: string;
-		vehicle_code: string;
 		vehicle_plate: string;
 		datetime_in: string;
 		datetime_out?: string;
-		amount: number;
+		amount?: number;
 		parking_rate: string;
 	}[];
-}
-
-export interface ParkingVehicleTypeCodeIdResponseData {
-	pgdb_findFirstvehicle_types?: {
-		id: string;
-		code?: string;
-		description?: string;
-	};
 }
 
 export interface ParkingVehicleTypesResponseData {
@@ -996,7 +623,15 @@ export interface ParkingVehicleTypesResponseData {
 	}[];
 }
 
-export interface ParkingVehicleTypesAllResponseData {
+export interface Parking__OldVehicleTypeCodeIdResponseData {
+	pgdb_findFirstvehicle_types?: {
+		id: string;
+		code?: string;
+		description?: string;
+	};
+}
+
+export interface Parking__OldVehicleTypesAllResponseData {
 	pgdb_findManyvehicle_types: {
 		id: string;
 		code?: string;
@@ -1006,11 +641,22 @@ export interface ParkingVehicleTypesAllResponseData {
 
 export interface ParkingMutationsCreateOneParkingTransactionResponseData {
 	pgdb_createOneparking_transactions?: {
-		id: string;
-		amount: number;
+		amount?: number;
 		vehicle_plate: string;
 		datetime_in: string;
 		datetime_out?: string;
+	};
+}
+
+export interface ParkingMutationsUpdateOneParkingTransactionResponseData {
+	pgdb_updateOneparking_transactions?: {
+		id: string;
+		created_at: string;
+		vehicle_plate: string;
+		datetime_in: string;
+		datetime_out?: string;
+		amount?: number;
+		parking_rate: string;
 	};
 }
 
@@ -1034,20 +680,14 @@ export interface ParkingQueriesParkingTransactionsAndRelationsResponseData {
 	pgdb_findManyparking_transactions: {
 		id: string;
 		created_at: string;
-		vehicle_code: string;
 		vehicle_plate: string;
 		datetime_in: string;
 		datetime_out?: string;
-		amount: number;
+		amount?: number;
 		parking_rates: {
 			min_hours?: number;
 			min_amount?: number;
 			variable_amount?: number;
-		};
-		vehicle_types: {
-			id: string;
-			code?: string;
-			description?: string;
 		};
 	}[];
 }

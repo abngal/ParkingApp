@@ -38,11 +38,10 @@ const Home: NextPage = () => {
 		operationName: 'parking/mutations/StartParking',
 	})
 
-	async function startParking() {
+	async function startParking(vCode: string) {
 		console.log('startParking() ....');
 		startParkingTransactionMutation.mutateAsync({
-			vehicleCode: '2W',
-			// vehicleCode: '4W',
+			vehicleCode: vCode, // '2W'|'4W'
 		});
 
 		// const d = {
@@ -99,14 +98,6 @@ const Home: NextPage = () => {
 		});
 	}
 
-
-	function make3Letters(): string {
-		/*
-			output samples: 'ABC', 'GTX', 'ZCX'
-		*/
-		return crypto.randomUUID().replace(/[0-9-]/g, '').substring(0,3).toUpperCase()
-	}
-
 	  
 	return (
 		<div>
@@ -149,7 +140,9 @@ const Home: NextPage = () => {
 			<br/>
 			<br/>
 
-			<button onClick={startParking}> Start Parking - 2-wheels </button>
+			Start Parking:  
+			<button className="border-solid border-2 rounded-lg p-2 m-5" onClick={ () => startParking('2W')}> 2-wheels </button>
+			<button className="border-solid border-2 rounded-lg p-2 m-5" onClick={ () => startParking('4W')}> 4-wheels </button>
 				{/* <button onClick={startParkingTransaction}> Start Parking - 4-wheels </button> */}
 			<br/>
 			<br/>
