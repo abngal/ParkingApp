@@ -57,11 +57,10 @@ const Home: NextPage = () => {
 	return (
 		<div>
 			
-			
 			Start Parking:  
-			<button className="border-solid border-2 rounded-lg p-2 m-5" onClick={ () => startParking('2W')}> 2-wheels </button>
-			<button className="border-solid border-2 rounded-lg p-2 m-5" onClick={ () => startParking('4W')}> 4-wheels </button>
-			<button className="border-solid border-2 rounded-lg p-2 m-5" onClick={finishParking}> Finish Parking & Compute </button>
+			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('2W')}> 2-wheels </button>
+			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('4W')}> 4-wheels </button>
+			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={finishParking}> Finish Parking & Compute </button>
 			
 
 			<br/>
