@@ -17,11 +17,7 @@ function timeDiffToNow(dateTimeStart: string, temporalNow: Temporal.PlainDateTim
 	const datetimeStart = Temporal.PlainDateTime.from(dateTimeStart.replace('Z',''));
 
 	const diff = temporalNow.since(datetimeStart);
-	console.log("diff.hours", diff.hours);
-	console.log("diff.minutes", diff.minutes);
 	const diffWithDecimalMinutes = diff.hours + ( diff.minutes / 60);
-	console.log("diffWithDecimalMinutes", diffWithDecimalMinutes);
-console.log('==================================================');
 	return diffWithDecimalMinutes;
 }
 
@@ -30,7 +26,6 @@ export default createOperation.mutation({
 		parkingTransactionId: z.string(),
 	}),
 	handler: async ({ input, operations }) => {
-		console.log("input", input);
 		/**
 		 * Compute total parking amount owed
 		 * 	- total = fixed amount + ( hours * variable amount) 
@@ -57,21 +52,15 @@ export default createOperation.mutation({
 				}
 			}
 		});
-		console.log("................txn", txn);
-
 		
 		if (!txn || !txn.parking_rates?.min_amount || !txn.parking_rates?.variable_amount || !txn.parking_rates?.min_hours  ) {
 			throw new InternalError({ message: 'Parking Transaction, or its props, are falsy '});
 		}
 
-		console.log(" ********************* ");
-
-
 		const temporalNow = Temporal.Now.plainDateTimeISO();
 		const timeDiffInHours: number = timeDiffToNow(txn.datetime_in.toISOString(), temporalNow);
 
 		const excessOverMinHours = ( timeDiffInHours - txn.parking_rates?.min_hours ); 
-		console.log("excessOverMinHours", excessOverMinHours);
 		const hasVariableHours = ( excessOverMinHours > 0 );
 		let totalAmount = 0;
 		// (a) just the total fixed amount
@@ -81,7 +70,6 @@ export default createOperation.mutation({
 		if (hasVariableHours) {
 			totalAmount += excessOverMinHours * txn.parking_rates?.variable_amount 
 		}
-		console.log("totalAmount", totalAmount);
 
 		// const updatedParkingTxn = prisma.UpdateOneParkingTransaction();
 
