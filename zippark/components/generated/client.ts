@@ -22,8 +22,6 @@ import type { OperationErrors } from "./ts-operation-errors";
 
 import type { PublicCustomClaims } from "./claims";
 import type {
-	DragonsResponse,
-	DragonsResponseData,
 	ParkingParkingTransactionsResponse,
 	ParkingParkingTransactionsInput,
 	ParkingParkingTransactionsResponseData,
@@ -78,15 +76,12 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "e6afb943",
+	applicationHash: "81fa78b7",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.149.1",
 };
 
 export const operationMetadata: OperationMetadata = {
-	Dragons: {
-		requiresAuthentication: false,
-	},
 	"parking/ParkingTransactions": {
 		requiresAuthentication: false,
 	},
@@ -175,12 +170,6 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
-	Dragons: {
-		input?: undefined;
-		response: { data?: DragonsResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	"parking/ParkingTransactions": {
 		input: ParkingParkingTransactionsInput;
 		response: { data?: ParkingParkingTransactionsResponse["data"]; error?: ClientOperationErrors };
@@ -268,12 +257,6 @@ export type Subscriptions = {
 };
 
 export type LiveQueries = {
-	Dragons: {
-		input?: undefined;
-		response: { data?: DragonsResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"parking/ParkingTransactions": {
 		input: ParkingParkingTransactionsInput;
 		response: { data?: ParkingParkingTransactionsResponse["data"]; error?: ClientOperationErrors };

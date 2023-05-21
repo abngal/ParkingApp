@@ -18,7 +18,7 @@ export interface pgdb_parking_transactionsWhereInput {
 	datetime_in?: pgdb_DateTimeFilter;
 	datetime_out?: pgdb_DateTimeNullableFilter;
 	amount?: pgdb_IntNullableFilter;
-	parking_rate?: pgdb_BigIntFilter;
+	parking_rate?: pgdb_IntFilter;
 	parking_rates?: pgdb_Parking_ratesRelationFilter;
 }
 
@@ -139,6 +139,28 @@ export interface pgdb_NestedIntNullableFilter {
 	not?: pgdb_NestedIntNullableFilter;
 }
 
+export interface pgdb_IntFilter {
+	equals?: number;
+	in?: number[];
+	notIn?: number[];
+	lt?: number;
+	lte?: number;
+	gt?: number;
+	gte?: number;
+	not?: pgdb_NestedIntFilter;
+}
+
+export interface pgdb_NestedIntFilter {
+	equals?: number;
+	in?: number[];
+	notIn?: number[];
+	lt?: number;
+	lte?: number;
+	gt?: number;
+	gte?: number;
+	not?: pgdb_NestedIntFilter;
+}
+
 export interface pgdb_Parking_ratesRelationFilter {
 	is?: pgdb_parking_ratesWhereInput;
 	isNot?: pgdb_parking_ratesWhereInput;
@@ -148,7 +170,7 @@ export interface pgdb_parking_ratesWhereInput {
 	AND?: pgdb_parking_ratesWhereInput;
 	OR?: pgdb_parking_ratesWhereInput[];
 	NOT?: pgdb_parking_ratesWhereInput;
-	id?: pgdb_BigIntFilter;
+	id?: pgdb_IntFilter;
 	created_at?: pgdb_DateTimeNullableFilter;
 	vehicle_id?: pgdb_BigIntNullableFilter;
 	min_hours?: pgdb_IntNullableFilter;
@@ -265,7 +287,6 @@ export interface pgdb_parking_ratesCreateNestedOneWithoutParking_transactionsInp
 }
 
 export interface pgdb_parking_ratesCreateWithoutParking_transactionsInput {
-	id?: string;
 	created_at?: string;
 	min_hours?: number;
 	min_amount?: number;
@@ -302,7 +323,7 @@ export interface pgdb_parking_ratesCreateOrConnectWithoutParking_transactionsInp
 }
 
 export interface pgdb_parking_ratesWhereUniqueInput {
-	id?: string;
+	id?: number;
 }
 
 export interface pgdb_parking_transactionsUpdateInput {
@@ -357,7 +378,6 @@ export interface pgdb_parking_ratesUpsertWithoutParking_transactionsInput {
 }
 
 export interface pgdb_parking_ratesUpdateWithoutParking_transactionsInput {
-	id?: pgdb_BigIntFieldUpdateOperationsInput;
 	created_at?: pgdb_NullableDateTimeFieldUpdateOperationsInput;
 	min_hours?: pgdb_NullableIntFieldUpdateOperationsInput;
 	min_amount?: pgdb_NullableIntFieldUpdateOperationsInput;
@@ -525,11 +545,6 @@ export interface InjectedParkingQueriesParkingTransactionsAndRelationsInput {
 	where: pgdb_parking_transactionsWhereInput;
 }
 
-export interface DragonsResponse {
-	data?: DragonsResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface ParkingParkingTransactionsResponse {
 	data?: ParkingParkingTransactionsResponseData;
 	errors?: GraphQLError[];
@@ -595,14 +610,6 @@ export interface UsersUpdateResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DragonsResponseData {
-	spacex_dragons?: {
-		name?: string;
-		active?: boolean;
-		id?: string;
-	}[];
-}
-
 export interface ParkingParkingTransactionsResponseData {
 	pgdb_findManyparking_transactions: {
 		id: string;
@@ -611,7 +618,7 @@ export interface ParkingParkingTransactionsResponseData {
 		datetime_in: string;
 		datetime_out?: string;
 		amount?: number;
-		parking_rate: string;
+		parking_rate: number;
 	}[];
 }
 
@@ -656,13 +663,13 @@ export interface ParkingMutationsUpdateOneParkingTransactionResponseData {
 		datetime_in: string;
 		datetime_out?: string;
 		amount?: number;
-		parking_rate: string;
+		parking_rate: number;
 	};
 }
 
 export interface ParkingQueriesParkingRatesAndRelationsResponseData {
 	pgdb_findManyparking_rates: {
-		id: string;
+		id: number;
 		created_at?: string;
 		min_hours?: number;
 		min_amount?: number;
