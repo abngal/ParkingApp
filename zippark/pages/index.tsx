@@ -8,29 +8,15 @@ const Home: NextPage = () => {
 
 	const vehicletypes = useQuery({
 		operationName: 'parking/queries/VehicleTypes',
-		input: { 
-			where: { 
-				// code: { equals: "4W" }, 
-			}, 
-		},
+		// input: { where: { code: { equals: "4W" }, }, },
 	});
 
 	const parkingRates = useQuery({
 		operationName: 'parking/queries/ParkingRatesAndRelations',
-		input: { 
-			where: { 
-				// id: { equals: "1" }, 
-			}, 
-		},
 	});
 
 	const parkingTransactions = useQuery({
 		operationName: 'parking/queries/ParkingTransactionsAndRelations',
-		input: { 
-			where: { 
-				// id: { equals: "1" }, 
-			}, 
-		},
 		liveQuery: true,
 	});
 
@@ -49,10 +35,10 @@ const Home: NextPage = () => {
 		operationName: 'parking/mutations/FinishParking',
 	})	  
 
-	function finishParking() {
+	function finishParking(txnId: string) {
 		console.log('finishParking()');
 		finishParkingTransactionMutation.mutateAsync({
-			parkingTransactionId: '1',
+			parkingTransactionId: txnId,
 		});
 	}
 
@@ -64,7 +50,7 @@ const Home: NextPage = () => {
 			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('2W')}> 2-wheels </button>
 			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('4W')}> 4-wheels </button>
 
-			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={finishParking}> 
+			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={ () => { finishParking(txnId) } }> 
 				<input value={txnId} onChange={ e => setTxnId( e.target.value ? parseInt(e.target.value) : 1 )} size={3} type="text"/>
 				&nbsp;
 				Finish Parking & Compute 

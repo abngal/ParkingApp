@@ -23,13 +23,10 @@ import type { OperationErrors } from "./ts-operation-errors";
 import type { PublicCustomClaims } from "./claims";
 import type {
 	ParkingQueriesParkingRatesAndRelationsResponse,
-	ParkingQueriesParkingRatesAndRelationsInput,
 	ParkingQueriesParkingRatesAndRelationsResponseData,
 	ParkingQueriesParkingTransactionsAndRelationsResponse,
-	ParkingQueriesParkingTransactionsAndRelationsInput,
 	ParkingQueriesParkingTransactionsAndRelationsResponseData,
 	ParkingQueriesVehicleTypesResponse,
-	ParkingQueriesVehicleTypesInput,
 	ParkingQueriesVehicleTypesResponseData,
 	ParkingMutationsFinishParkingResponse,
 	ParkingMutationsFinishParkingInput,
@@ -62,7 +59,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "15fca2c0",
+	applicationHash: "f2ddb678",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.149.1",
 };
@@ -142,19 +139,19 @@ export const createClient = (config?: CreateClientConfig) => {
 
 export type Queries = {
 	"parking/queries/ParkingRatesAndRelations": {
-		input: ParkingQueriesParkingRatesAndRelationsInput;
+		input?: undefined;
 		response: { data?: ParkingQueriesParkingRatesAndRelationsResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
 	"parking/queries/ParkingTransactionsAndRelations": {
-		input: ParkingQueriesParkingTransactionsAndRelationsInput;
+		input?: undefined;
 		response: { data?: ParkingQueriesParkingTransactionsAndRelationsResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
 	"parking/queries/VehicleTypes": {
-		input: ParkingQueriesVehicleTypesInput;
+		input?: undefined;
 		response: { data?: ParkingQueriesVehicleTypesResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
@@ -201,19 +198,19 @@ export type Subscriptions = {
 
 export type LiveQueries = {
 	"parking/queries/ParkingRatesAndRelations": {
-		input: ParkingQueriesParkingRatesAndRelationsInput;
+		input?: undefined;
 		response: { data?: ParkingQueriesParkingRatesAndRelationsResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
 	"parking/queries/ParkingTransactionsAndRelations": {
-		input: ParkingQueriesParkingTransactionsAndRelationsInput;
+		input?: undefined;
 		response: { data?: ParkingQueriesParkingTransactionsAndRelationsResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
 	"parking/queries/VehicleTypes": {
-		input: ParkingQueriesVehicleTypesInput;
+		input?: undefined;
 		response: { data?: ParkingQueriesVehicleTypesResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;

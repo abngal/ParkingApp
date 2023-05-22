@@ -1,5 +1,5 @@
-query ParkingRates($where: pgdb_parking_ratesWhereInput!) {
-	pgdb_findManyparking_rates(where: $where) {
+query ParkingRates() {
+	pgdb_findManyparking_rates() {
 		id 		
 		created_at 
 		min_hours 

@@ -1,5 +1,5 @@
-query ParkingTransactionsAndRelated($where: pgdb_parking_transactionsWhereInput!) {
-	pgdb_findManyparking_transactions(where: $where) {
+query ParkingTransactionsAndRelated() {
+	pgdb_findManyparking_transactions() {
 		id
 		created_at
 		vehicle_plate
