@@ -7,7 +7,7 @@ const Home: NextPage = () => {
 	const [txnId, setTxnId] = useState(1);
 
 	const vehicletypes = useQuery({
-		operationName: 'parking/VehicleTypes',
+		operationName: 'parking/queries/VehicleTypes',
 		input: { 
 			where: { 
 				// code: { equals: "4W" }, 

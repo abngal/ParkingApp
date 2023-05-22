@@ -1,7 +1,0 @@
-query VehicleTypesAll() {
-	pgdb_findManyvehicle_types() {
-		id
-		code
-		description
-	}
-}
