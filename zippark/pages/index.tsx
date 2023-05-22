@@ -1,7 +1,10 @@
 import { NextPage } from 'next';
 import { useMutation, useQuery } from '../lib/react-query';
+import { useEffect, useState } from 'react';
 
 const Home: NextPage = () => {
+
+	const [txnId, setTxnId] = useState(1);
 
 	const vehicletypes = useQuery({
 		operationName: 'parking/VehicleTypes',
@@ -60,8 +63,13 @@ const Home: NextPage = () => {
 			Start Parking:  
 			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('2W')}> 2-wheels </button>
 			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('4W')}> 4-wheels </button>
-			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={finishParking}> Finish Parking & Compute </button>
-			
+
+			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={finishParking}> 
+				<input value={txnId} onChange={ e => setTxnId( e.target.value ? parseInt(e.target.value) : 1 )} size={3} type="text"/>
+				&nbsp;
+				Finish Parking & Compute 
+			</button>
+			txnId: { txnId }
 
 			<br/>
 			----------------------------------------------------------------------------
