@@ -50,7 +50,7 @@ const Home: NextPage = () => {
 			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('2W')}> 2-wheels </button>
 			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('4W')}> 4-wheels </button>
 
-			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={ () => { finishParking(txnId) } }> 
+			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={ () => { finishParking(txnId.toString()) } }> 
 				<input value={txnId} onChange={ e => setTxnId( e.target.value ? parseInt(e.target.value) : 1 )} size={3} type="text"/>
 				&nbsp;
 				Finish Parking & Compute 
