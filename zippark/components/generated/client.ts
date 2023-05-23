@@ -36,15 +36,6 @@ import type {
 	ParkingMutationsStartParkingResponse,
 	ParkingMutationsStartParkingInput,
 	ParkingMutationsStartParkingResponseData,
-	UsersGetResponse,
-	UsersGetInput,
-	UsersGetResponseData,
-	UsersSubscribeResponse,
-	UsersSubscribeInput,
-	UsersSubscribeResponseData,
-	UsersUpdateResponse,
-	UsersUpdateInput,
-	UsersUpdateResponseData,
 } from "./models";
 export type UserRole = "admin" | "user";
 
@@ -61,7 +52,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "61ef1924",
+	applicationHash: "1fa113c3",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.149.1",
 };
@@ -83,15 +74,6 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	"parking/mutations/StartParking": {
-		requiresAuthentication: false,
-	},
-	"users/get": {
-		requiresAuthentication: false,
-	},
-	"users/subscribe": {
-		requiresAuthentication: false,
-	},
-	"users/update": {
 		requiresAuthentication: false,
 	},
 };
@@ -167,12 +149,6 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"users/get": {
-		input: UsersGetInput;
-		response: { data?: UsersGetResponseData; error?: OperationErrors["users/get"] };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 };
 
 export type Mutations = {
@@ -192,20 +168,9 @@ export type Mutations = {
 		};
 		requiresAuthentication: false;
 	};
-	"users/update": {
-		input: UsersUpdateInput;
-		response: { data?: UsersUpdateResponseData; error?: OperationErrors["users/update"] };
-		requiresAuthentication: false;
-	};
 };
 
-export type Subscriptions = {
-	"users/subscribe": {
-		input: UsersSubscribeInput;
-		response: { data?: UsersSubscribeResponseData; error?: OperationErrors["users/subscribe"] };
-		requiresAuthentication: false;
-	};
-};
+export type Subscriptions = {};
 
 export type LiveQueries = {
 	"parking/queries/Entrances": {
@@ -229,12 +194,6 @@ export type LiveQueries = {
 	"parking/queries/VehicleTypes": {
 		input?: undefined;
 		response: { data?: ParkingQueriesVehicleTypesResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"users/get": {
-		input: UsersGetInput;
-		response: { data?: UsersGetResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

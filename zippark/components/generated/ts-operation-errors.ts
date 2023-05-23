@@ -5,13 +5,7 @@ import type { ClientOperationErrors, GraphQLError } from "@wundergraph/sdk/clien
 export type OperationErrors = {
 	"parking/mutations/FinishParking": ParkingMutationsFinishParkingErrors;
 	"parking/mutations/StartParking": ParkingMutationsStartParkingErrors;
-	"users/get": UsersGetErrors;
-	"users/subscribe": UsersSubscribeErrors;
-	"users/update": UsersUpdateErrors;
 };
 
 export type ParkingMutationsFinishParkingErrors = ClientOperationErrors;
 export type ParkingMutationsStartParkingErrors = ClientOperationErrors;
-export type UsersGetErrors = ClientOperationErrors;
-export type UsersSubscribeErrors = ClientOperationErrors;
-export type UsersUpdateErrors = ClientOperationErrors;

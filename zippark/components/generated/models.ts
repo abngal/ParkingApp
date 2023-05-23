@@ -2,9 +2,6 @@
 
 import type function_ParkingMutationsFinishParking from "../../.wundergraph/operations/parking/mutations/FinishParking";
 import type function_ParkingMutationsStartParking from "../../.wundergraph/operations/parking/mutations/StartParking";
-import type function_UsersGet from "../../.wundergraph/operations/users/get";
-import type function_UsersSubscribe from "../../.wundergraph/operations/users/subscribe";
-import type function_UsersUpdate from "../../.wundergraph/operations/users/update";
 import type { ExtractInput, ExtractResponse } from "@wundergraph/sdk/operations";
 import type { OperationErrors } from "./ts-operation-errors";
 
@@ -17,12 +14,6 @@ export type ParkingMutationsFinishParkingInput = ExtractInput<typeof function_Pa
 
 export type ParkingMutationsStartParkingInput = ExtractInput<typeof function_ParkingMutationsStartParking>;
 
-export type UsersGetInput = ExtractInput<typeof function_UsersGet>;
-
-export type UsersSubscribeInput = ExtractInput<typeof function_UsersSubscribe>;
-
-export type UsersUpdateInput = ExtractInput<typeof function_UsersUpdate>;
-
 export interface InternalParkingMutationsFinishParkingInput {
 	parkingTransactionId: string;
 }
@@ -30,20 +21,6 @@ export interface InternalParkingMutationsFinishParkingInput {
 export interface InternalParkingMutationsStartParkingInput {
 	vehicleCode: string;
 	entranceCode: string;
-}
-
-export interface InternalUsersGetInput {
-	id: string;
-}
-
-export interface InternalUsersSubscribeInput {
-	id: string;
-}
-
-export interface InternalUsersUpdateInput {
-	id: string;
-	name: string;
-	bio: string;
 }
 
 export interface ParkingQueriesEntrancesResponse {
@@ -73,21 +50,6 @@ export interface ParkingMutationsFinishParkingResponse {
 
 export interface ParkingMutationsStartParkingResponse {
 	data?: ParkingMutationsStartParkingResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface UsersGetResponse {
-	data?: UsersGetResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface UsersSubscribeResponse {
-	data?: UsersSubscribeResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface UsersUpdateResponse {
-	data?: UsersUpdateResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -146,9 +108,3 @@ export interface ParkingQueriesVehicleTypesResponseData {
 export type ParkingMutationsFinishParkingResponseData = ExtractResponse<typeof function_ParkingMutationsFinishParking>;
 
 export type ParkingMutationsStartParkingResponseData = ExtractResponse<typeof function_ParkingMutationsStartParking>;
-
-export type UsersGetResponseData = ExtractResponse<typeof function_UsersGet>;
-
-export type UsersSubscribeResponseData = ExtractResponse<typeof function_UsersSubscribe>;
-
-export type UsersUpdateResponseData = ExtractResponse<typeof function_UsersUpdate>;
