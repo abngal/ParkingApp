@@ -45,13 +45,14 @@ export default createOperation.mutation({
 				}
 			},  
 			where: { 	
-				parking_rates: {
-					is: { 
-						vehicle_types: {
-							is: { code: '2W' }
-						}
-					}
-				}
+				id : { equals: BigInt(input.parkingTransactionId) }
+				// parking_rates: {
+				// 	is: { 
+				// 		vehicle_types: {
+				// 			is: { code: '2W' }
+				// 		}
+				// 	}
+				// }
 			}
 		});
 		
@@ -75,7 +76,7 @@ export default createOperation.mutation({
 
 		const updateParams = {
 			where: { 
-				id: 1, 
+				id: txn.id, 
 				// id: parseInt(input.parkingTransactionId, 10), 
 			}, 
 			data: {
@@ -94,11 +95,6 @@ export default createOperation.mutation({
 		}
 		console.log("response", response);
 
-		// return {
-		// 	x: 4422,
-		// 	// ...updated,
-		// };
 		return response;
-		// return JSON.stringify(response);
 	},
 });
