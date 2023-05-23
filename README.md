@@ -31,3 +31,6 @@
         - was not able to because of CORs error I was not able to have it working
     - Gcash/Magpie integration
         - was not able to have time
+
+# Tests
+- cd zippark && npm test
