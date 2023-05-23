@@ -1,0 +1,19 @@
+query ParkingTransactionsAndRelated() {
+	pgdb_findManyparking_transactions() {
+		id
+		created_at
+		vehicle_plate
+		datetime_in
+		datetime_out
+		amount
+		parking_rates {
+			min_hours
+			min_amount
+			variable_amount
+		}
+		entrances {
+			code
+			name
+		}
+	}
+}

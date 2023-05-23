@@ -1,0 +1,15 @@
+query ParkingRates() {
+	pgdb_findManyparking_rates() {
+		id 		
+		created_at 
+		min_hours 
+		min_amount 
+		variable_amount
+		is_active 		
+		vehicle_types {
+			id
+			code
+			description
+		}
+	}
+}

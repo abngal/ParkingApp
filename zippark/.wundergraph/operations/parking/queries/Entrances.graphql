@@ -1,0 +1,7 @@
+query Entrances() {
+	pgdb_findManyentrances() {
+		id
+		code
+		name
+	}
+}
