@@ -22,7 +22,7 @@ function timeDiffToNow(dateTimeStart: string) {
 	return diffWithDecimalMinutes;
 }
 
-function make3Letters(): string {
+function random3Letters(): string {
 	/*
 		output samples: 'ABC', 'GTX', 'ZCX'
 	*/
@@ -36,7 +36,6 @@ export default createOperation.mutation({
 		entranceCode: z.string(),
 	}),
 	handler: async ({ input, operations }) => {
-		console.log("input", input);
 		/**
 		 * Inserts a new parking transaction
 		 *  - (a) gets the id of the active parking rate first before insert of record
@@ -68,8 +67,7 @@ export default createOperation.mutation({
 				code: input.entranceCode,
 			} 
 		});
-		console.log('++++++++++++++++++++++++++++++++==');
-		console.log(entrance);
+
 		if (!entrance || !entrance?.id) {
 			throw new InternalError({ message: 'unexpected entrance code'});
 		}
@@ -80,7 +78,7 @@ export default createOperation.mutation({
 
 		// (b)
 		const data = { 
-			vehicle_plate: make3Letters() + ' 222',
+			vehicle_plate: random3Letters() + ' 222',
 			amount: undefined, // to update on finish of parking
 			parking_rate: parkingRate.id,
 			entrance: entrance?.id,

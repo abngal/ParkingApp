@@ -1,4 +1,4 @@
-import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill';
+import { Temporal } from '@js-temporal/polyfill';
 
 import { PrismaClient } from '@prisma/client'
 import { InternalError } from '@wundergraph/sdk/dist/client/errors';
@@ -49,14 +49,16 @@ export default createOperation.mutation({
 			}
 		});
 		
-		if (!txn || !txn.parking_rates?.min_amount || !txn.parking_rates?.variable_amount || !txn.parking_rates?.min_hours  ) {
-			throw new InternalError({ message: 'Parking Transaction, or its props, are falsy '});
+		if ( !txn ) {
+			throw new InternalError({ message: 'Missing <Parking Transaction> object'});
+		} else if ( !txn.parking_rates?.min_amount || !txn.parking_rates?.variable_amount || !txn.parking_rates?.min_hours) {
+			throw new InternalError({ message: 'Missing required properties on <Parking Transaction>'});
 		}
 
 		const temporalNow = Temporal.Now.plainDateTimeISO();
 		const timeDiffInHours: number = timeDiffToNow(txn.datetime_in.toISOString(), temporalNow);
 
-		const excessOverMinHours = ( timeDiffInHours - txn.parking_rates?.min_hours ); 
+		const excessOverMinHours = Math.abs( timeDiffInHours - txn.parking_rates?.min_hours ); 
 		const hasVariableHours = ( excessOverMinHours > 0 );
 		let totalAmount = 0;
 		// (a) just the total fixed amount
@@ -64,7 +66,9 @@ export default createOperation.mutation({
 		totalAmount += fixedAmount;
 		// (b) or add variable hours
 		if (hasVariableHours) {
-			totalAmount += excessOverMinHours * txn.parking_rates?.variable_amount 
+			const variableAmount = excessOverMinHours * txn.parking_rates?.variable_amount 
+			console.log("variableAmount", variableAmount);
+			totalAmount += variableAmount;
 		}
 
 		const updateParams = {
@@ -73,11 +77,10 @@ export default createOperation.mutation({
 			}, 
 			data: {
 				datetime_out: new Date(Temporal.Now.plainDateTimeISO().toString()),
-				amount: Math.round(totalAmount),
+				amount: Math.ceil(totalAmount),
 			}
 		};
 		const updated = await prisma.parking_transactions.update(updateParams);
-		console.log("typeof updated", typeof updated);
 
 		const response = {
 			id: updated.id.toString(),			
@@ -85,8 +88,6 @@ export default createOperation.mutation({
 			datetime_in: updated.datetime_in,
 			datetime_out: updated.datetime_out,
 		}
-		console.log("response", response);
-
 		return response;
 	},
 });
