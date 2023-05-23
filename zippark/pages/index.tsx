@@ -5,6 +5,11 @@ import { useEffect, useState } from 'react';
 const Home: NextPage = () => {
 
 	const [txnId, setTxnId] = useState(1);
+	const [entranceCode, setEntranceCode] = useState('ENT01');
+
+	const entrances = useQuery({
+		operationName: 'parking/queries/Entrances',
+	});
 
 	const vehicletypes = useQuery({
 		operationName: 'parking/queries/VehicleTypes',
@@ -24,10 +29,11 @@ const Home: NextPage = () => {
 		operationName: 'parking/mutations/StartParking',
 	})
 
-	async function startParking(vCode: string) {
+	async function startParking(vCode: string, entranceCode: string) {
 		console.log('startParking() ....');
 		startParkingTransactionMutation.mutateAsync({
 			vehicleCode: vCode, // '2W'|'4W'
+			entranceCode: entranceCode, // '2W'|'4W'
 		});
 	}
 
@@ -45,18 +51,39 @@ const Home: NextPage = () => {
 	  
 	return (
 		<div>
-			
-			Start Parking:  
-			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('2W')}> 2-wheels </button>
-			<button className="border-solid border-2 bg-sky-400 rounded-lg p-2 m-5" onClick={ () => startParking('4W')}> 4-wheels </button>
+			&nbsp;&nbsp;&nbsp;
+			[START] Entrance:  <input  className="border-solid border-2 rounded-sm p-2 m-5"
+								value={entranceCode} onChange={ e => setEntranceCode( e.target.value ? e.target.value : 'ENT01' )} size={3} type="text"
+						/>
 
-			<button className="border-solid border-2 bg-red-400 rounded-lg p-2 m-5" onClick={ () => { finishParking(txnId.toString()) } }> 
-				<input value={txnId} onChange={ e => setTxnId( e.target.value ? parseInt(e.target.value) : 1 )} size={3} type="text"/>
+
+			 
+			<button className="border-solid border-2 bg-sky-400 rounded-sm p-2 m-5" onClick={ () => startParking('2W', entranceCode)}> 2-wheels </button>
+			<button className="border-solid border-2 bg-sky-400 rounded-sm p-2" onClick={ () => startParking('4W', entranceCode)}> 4-wheels </button>
+
+			<br/>
+
+			&nbsp;&nbsp;&nbsp;
+			[ END ]
+			existing txn id: <input className="border-solid border-2 rounded-sm p-2 m-5"
+									value={txnId} onChange={ e => setTxnId( e.target.value ? parseInt(e.target.value) : 1 )} size={3} type="text"
+							/>
+			<button className="border-solid border-2 bg-red-400 rounded-sm p-2" onClick={ () => { finishParking(txnId.toString()) } }> 
 				&nbsp;
 				Finish Parking & Compute 
 			</button>
-			txnId: { txnId }
 
+
+			<br/>
+			----------------------------------------------------------------------------
+			<br/>
+
+			Entrances:
+			<br/>
+			<br/>
+				<div className="pl-10"> 
+				{ entrances.data ? JSON.stringify(entrances.data) : '......Loading......' }	
+				</div>
 			<br/>
 			----------------------------------------------------------------------------
 			<br/>
@@ -64,9 +91,9 @@ const Home: NextPage = () => {
 			parkingRates:
 			<br/>
 			<br/>
-
-				{ JSON.stringify(parkingRates.data) }	
-
+				<div className="pl-10"> 
+				{ parkingRates.data ? JSON.stringify(parkingRates.data) : '......Loading......' }	
+				</div>
 
 			<br/>
 			----------------------------------------------------------------------------
@@ -75,9 +102,9 @@ const Home: NextPage = () => {
 			vehicletypes:
 			<br/>
 			<br/>
-
-				{ JSON.stringify(vehicletypes.data) }	
-
+				<div className="pl-10"> 
+				{ vehicletypes.data ? JSON.stringify(vehicletypes.data) : '......Loading......' }	
+				</div>
 			<br/>
 			----------------------------------------------------------------------------
 			<br/>
@@ -85,9 +112,9 @@ const Home: NextPage = () => {
 			Transactions:
 			<br/>
 			<br/>
-
-				{ JSON.stringify(parkingTransactions.data) }	
-
+				<div className="pl-10"> 
+				{ parkingTransactions.data ? JSON.stringify(parkingTransactions.data) : '......Loading......' }	
+				</div>
 			<br/>
 			----------------------------------------------------------------------------
 			<br/>

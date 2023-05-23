@@ -33,6 +33,7 @@ function make3Letters(): string {
 export default createOperation.mutation({
 	input: z.object({
 		vehicleCode: z.string(),
+		entranceCode: z.string(),
 	}),
 	handler: async ({ input, operations }) => {
 		console.log("input", input);
@@ -48,7 +49,7 @@ export default createOperation.mutation({
 			select: { 
 				id: true,
 				is_active: true
-			} ,  
+			},  
 			where: { 	
 				is_active: true, 
 				vehicle_types: { 
@@ -56,6 +57,22 @@ export default createOperation.mutation({
 				} 
 			} 
 		});
+		
+		const entrance = await prisma.entrances.findFirst( { 
+			select: { 
+				id: true,
+				code: true,
+				name: true,
+			},  
+			where: { 	
+				code: input.entranceCode,
+			} 
+		});
+		console.log('++++++++++++++++++++++++++++++++==');
+		console.log(entrance);
+		if (!entrance || !entrance?.id) {
+			throw new InternalError({ message: 'unexpected entrance code'});
+		}
 
 		if (!parkingRate) {
 			throw new InternalError({ message: 'undefined parkingRate'});
@@ -65,7 +82,8 @@ export default createOperation.mutation({
 		const data = { 
 			vehicle_plate: make3Letters() + ' 222',
 			amount: undefined, // to update on finish of parking
-			parking_rate: parkingRate.id
+			parking_rate: parkingRate.id,
+			entrance: entrance?.id,
 		}
 
 		const newParkingTxn = await prisma.parking_transactions.create({ data: data });
@@ -73,12 +91,17 @@ export default createOperation.mutation({
 			throw new InternalError({ message: 'failed to create on parking_transacion'});
 		}
 
-		const result = JSON.stringify(newParkingTxn, (key, value) => { 
-				console.log(key, value)
-				return ['bigint', 'int'].includes(typeof value) ? value.toString() : value 
-			}
-		);
+		const response = {
+			id: newParkingTxn.id,
+			created_at: newParkingTxn.created_at,
+			vehicle_plate: newParkingTxn.vehicle_plate,
+			datetime_in: newParkingTxn.datetime_in,
+			datetime_out: newParkingTxn.datetime_out,
+			amount: newParkingTxn.amount,
+			parkingRate: newParkingTxn.parking_rate,
+			entrance: newParkingTxn.entrance,
+		}
 
-		return JSON.parse(result);
+		return response;
 	},
 });

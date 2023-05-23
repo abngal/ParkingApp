@@ -22,6 +22,8 @@ import type { OperationErrors } from "./ts-operation-errors";
 
 import type { PublicCustomClaims } from "./claims";
 import type {
+	ParkingQueriesEntrancesResponse,
+	ParkingQueriesEntrancesResponseData,
 	ParkingQueriesParkingRatesAndRelationsResponse,
 	ParkingQueriesParkingRatesAndRelationsResponseData,
 	ParkingQueriesParkingTransactionsAndRelationsResponse,
@@ -59,12 +61,15 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "f2ddb678",
+	applicationHash: "c5b10b36",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.149.1",
 };
 
 export const operationMetadata: OperationMetadata = {
+	"parking/queries/Entrances": {
+		requiresAuthentication: false,
+	},
 	"parking/queries/ParkingRatesAndRelations": {
 		requiresAuthentication: false,
 	},
@@ -138,6 +143,12 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
+	"parking/queries/Entrances": {
+		input?: undefined;
+		response: { data?: ParkingQueriesEntrancesResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	"parking/queries/ParkingRatesAndRelations": {
 		input?: undefined;
 		response: { data?: ParkingQueriesParkingRatesAndRelationsResponse["data"]; error?: ClientOperationErrors };
@@ -197,6 +208,12 @@ export type Subscriptions = {
 };
 
 export type LiveQueries = {
+	"parking/queries/Entrances": {
+		input?: undefined;
+		response: { data?: ParkingQueriesEntrancesResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
 	"parking/queries/ParkingRatesAndRelations": {
 		input?: undefined;
 		response: { data?: ParkingQueriesParkingRatesAndRelationsResponse["data"]; error?: ClientOperationErrors };

@@ -11,5 +11,9 @@ query ParkingTransactionsAndRelated() {
 			min_amount
 			variable_amount
 		}
+		entrances {
+			code
+			name
+		}
 	}
 }

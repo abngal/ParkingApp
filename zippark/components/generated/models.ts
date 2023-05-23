@@ -29,6 +29,7 @@ export interface InternalParkingMutationsFinishParkingInput {
 
 export interface InternalParkingMutationsStartParkingInput {
 	vehicleCode: string;
+	entranceCode: string;
 }
 
 export interface InternalUsersGetInput {
@@ -43,6 +44,11 @@ export interface InternalUsersUpdateInput {
 	id: string;
 	name: string;
 	bio: string;
+}
+
+export interface ParkingQueriesEntrancesResponse {
+	data?: ParkingQueriesEntrancesResponseData;
+	errors?: GraphQLError[];
 }
 
 export interface ParkingQueriesParkingRatesAndRelationsResponse {
@@ -85,6 +91,14 @@ export interface UsersUpdateResponse {
 	errors?: GraphQLError[];
 }
 
+export interface ParkingQueriesEntrancesResponseData {
+	pgdb_findManyentrances: {
+		id: number;
+		code: string;
+		name?: string;
+	}[];
+}
+
 export interface ParkingQueriesParkingRatesAndRelationsResponseData {
 	pgdb_findManyparking_rates: {
 		id: number;
@@ -94,7 +108,7 @@ export interface ParkingQueriesParkingRatesAndRelationsResponseData {
 		variable_amount?: number;
 		is_active: boolean;
 		vehicle_types?: {
-			id: string;
+			id: number;
 			code?: string;
 			description?: string;
 		};
@@ -103,7 +117,7 @@ export interface ParkingQueriesParkingRatesAndRelationsResponseData {
 
 export interface ParkingQueriesParkingTransactionsAndRelationsResponseData {
 	pgdb_findManyparking_transactions: {
-		id: string;
+		id: number;
 		created_at: string;
 		vehicle_plate: string;
 		datetime_in: string;
@@ -114,12 +128,16 @@ export interface ParkingQueriesParkingTransactionsAndRelationsResponseData {
 			min_amount?: number;
 			variable_amount?: number;
 		};
+		entrances: {
+			code: string;
+			name?: string;
+		};
 	}[];
 }
 
 export interface ParkingQueriesVehicleTypesResponseData {
 	pgdb_findManyvehicle_types: {
-		id: string;
+		id: number;
 		code?: string;
 		description?: string;
 	}[];
