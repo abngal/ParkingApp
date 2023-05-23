@@ -6,12 +6,16 @@ const wg = createTestServer({ fetch: fetch as any });
 beforeAll(() => wg.start());
 afterAll(() => wg.stop());
 
-describe('Test Dragons API', () => {
-	test('dragons', async () => {
+describe('Test Entrances Operation - Graphql', () => {
+	test('must return 2 records from database', async () => {
 		const result = await wg.client().query({
-			operationName: 'Dragons',
+			operationName: 'parking/queries/Entrances',
 		});
+		console.log("result", result);
+
 		expect(result.error).toBeFalsy();
-		expect(result.data?.spacex_dragons?.length).toBe(2);
+		expect(result.data?.pgdb_findManyentrances?.length).toBe(2);
 	});
+
+	// TODO: test other operations, especially typescript ones ( not just graphql )
 });
