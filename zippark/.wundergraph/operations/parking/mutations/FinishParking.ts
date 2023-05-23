@@ -45,14 +45,7 @@ export default createOperation.mutation({
 				}
 			},  
 			where: { 	
-				id : { equals: BigInt(input.parkingTransactionId) }
-				// parking_rates: {
-				// 	is: { 
-				// 		vehicle_types: {
-				// 			is: { code: '2W' }
-				// 		}
-				// 	}
-				// }
+				id : { equals: parseInt(input.parkingTransactionId) }
 			}
 		});
 		
