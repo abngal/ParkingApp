@@ -77,7 +77,6 @@ export default createOperation.mutation({
 		const updateParams = {
 			where: { 
 				id: txn.id, 
-				// id: parseInt(input.parkingTransactionId, 10), 
 			}, 
 			data: {
 				datetime_out: new Date(Temporal.Now.plainDateTimeISO().toString()),
