@@ -2,15 +2,17 @@
 
 - How to run:
     - cd zippark && npm install && npm start 
+    - wait for auto open on browser for localhost:3000 for the web ui for testing
 
 - Technologies Used
     - Typescript
         - Framework: Wundergraph Backend-For-Frontend Graphql/REST
         - Libraries used:
             - Notable:
-                - NextJs + React Query for a quick frontend mainly or manual testing 
+                - [Temporal](https://github.com/tc39/proposal-temporal) lib to manage date+time 
             - Supplemental:
-                - Prisma
+                - NextJs + React Query for a quick frontend mainly or manual testing 
+                - Prisma ( no need to run prisma migration, because schema and sample data alsready exists in the live database)
 
 # Zippark Parking APIs
 - Parking Start
