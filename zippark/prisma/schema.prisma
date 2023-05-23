@@ -27,6 +27,8 @@ model parking_transactions {
   datetime_out  DateTime?     @db.Timestamp(6)
   amount        Int?          @default(0) @db.SmallInt
   parking_rate  Int
+  entrance      Int?
+  entrances     entrances?    @relation(fields: [entrance], references: [id], onDelete: Cascade, onUpdate: NoAction)
   parking_rates parking_rates @relation(fields: [parking_rate], references: [id], onDelete: Cascade, onUpdate: NoAction)
 }
 
@@ -36,4 +38,14 @@ model vehicle_types {
   code          String?         @default("2") @db.VarChar
   description   String?
   parking_rates parking_rates[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model entrances {
+  id                   Int                    @id @default(autoincrement())
+  created_at           DateTime?              @default(now()) @db.Timestamptz(6)
+  code                 String
+  name                 String?
+  parking_transactions parking_transactions[]
 }
