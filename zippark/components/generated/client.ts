@@ -22,17 +22,20 @@ import type { OperationErrors } from "./ts-operation-errors";
 
 import type { PublicCustomClaims } from "./claims";
 import type {
-	DragonsResponse,
-	DragonsResponseData,
-	UsersGetResponse,
-	UsersGetInput,
-	UsersGetResponseData,
-	UsersSubscribeResponse,
-	UsersSubscribeInput,
-	UsersSubscribeResponseData,
-	UsersUpdateResponse,
-	UsersUpdateInput,
-	UsersUpdateResponseData,
+	ParkingQueriesEntrancesResponse,
+	ParkingQueriesEntrancesResponseData,
+	ParkingQueriesParkingRatesAndRelationsResponse,
+	ParkingQueriesParkingRatesAndRelationsResponseData,
+	ParkingQueriesParkingTransactionsAndRelationsResponse,
+	ParkingQueriesParkingTransactionsAndRelationsResponseData,
+	ParkingQueriesVehicleTypesResponse,
+	ParkingQueriesVehicleTypesResponseData,
+	ParkingMutationsFinishParkingResponse,
+	ParkingMutationsFinishParkingInput,
+	ParkingMutationsFinishParkingResponseData,
+	ParkingMutationsStartParkingResponse,
+	ParkingMutationsStartParkingInput,
+	ParkingMutationsStartParkingResponseData,
 } from "./models";
 export type UserRole = "admin" | "user";
 
@@ -49,22 +52,28 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "1af7b980",
+	applicationHash: "1fa113c3",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.149.1",
 };
 
 export const operationMetadata: OperationMetadata = {
-	Dragons: {
+	"parking/queries/Entrances": {
 		requiresAuthentication: false,
 	},
-	"users/get": {
+	"parking/queries/ParkingRatesAndRelations": {
 		requiresAuthentication: false,
 	},
-	"users/subscribe": {
+	"parking/queries/ParkingTransactionsAndRelations": {
 		requiresAuthentication: false,
 	},
-	"users/update": {
+	"parking/queries/VehicleTypes": {
+		requiresAuthentication: false,
+	},
+	"parking/mutations/FinishParking": {
+		requiresAuthentication: false,
+	},
+	"parking/mutations/StartParking": {
 		requiresAuthentication: false,
 	},
 };
@@ -116,46 +125,75 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
-	Dragons: {
+	"parking/queries/Entrances": {
 		input?: undefined;
-		response: { data?: DragonsResponse["data"]; error?: ClientOperationErrors };
+		response: { data?: ParkingQueriesEntrancesResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"users/get": {
-		input: UsersGetInput;
-		response: { data?: UsersGetResponseData; error?: OperationErrors["users/get"] };
+	"parking/queries/ParkingRatesAndRelations": {
+		input?: undefined;
+		response: { data?: ParkingQueriesParkingRatesAndRelationsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"parking/queries/ParkingTransactionsAndRelations": {
+		input?: undefined;
+		response: { data?: ParkingQueriesParkingTransactionsAndRelationsResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"parking/queries/VehicleTypes": {
+		input?: undefined;
+		response: { data?: ParkingQueriesVehicleTypesResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
 };
 
 export type Mutations = {
-	"users/update": {
-		input: UsersUpdateInput;
-		response: { data?: UsersUpdateResponseData; error?: OperationErrors["users/update"] };
+	"parking/mutations/FinishParking": {
+		input: ParkingMutationsFinishParkingInput;
+		response: {
+			data?: ParkingMutationsFinishParkingResponseData;
+			error?: OperationErrors["parking/mutations/FinishParking"];
+		};
+		requiresAuthentication: false;
+	};
+	"parking/mutations/StartParking": {
+		input: ParkingMutationsStartParkingInput;
+		response: {
+			data?: ParkingMutationsStartParkingResponseData;
+			error?: OperationErrors["parking/mutations/StartParking"];
+		};
 		requiresAuthentication: false;
 	};
 };
 
-export type Subscriptions = {
-	"users/subscribe": {
-		input: UsersSubscribeInput;
-		response: { data?: UsersSubscribeResponseData; error?: OperationErrors["users/subscribe"] };
-		requiresAuthentication: false;
-	};
-};
+export type Subscriptions = {};
 
 export type LiveQueries = {
-	Dragons: {
+	"parking/queries/Entrances": {
 		input?: undefined;
-		response: { data?: DragonsResponse["data"]; error?: ClientOperationErrors };
+		response: { data?: ParkingQueriesEntrancesResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"users/get": {
-		input: UsersGetInput;
-		response: { data?: UsersGetResponse["data"]; error?: ClientOperationErrors };
+	"parking/queries/ParkingRatesAndRelations": {
+		input?: undefined;
+		response: { data?: ParkingQueriesParkingRatesAndRelationsResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"parking/queries/ParkingTransactionsAndRelations": {
+		input?: undefined;
+		response: { data?: ParkingQueriesParkingTransactionsAndRelationsResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"parking/queries/VehicleTypes": {
+		input?: undefined;
+		response: { data?: ParkingQueriesVehicleTypesResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
