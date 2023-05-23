@@ -9,4 +9,5 @@ export default configureWunderGraphServer<HooksConfig, InternalClient>(() => ({
 		mutations: {},
 	},
 	graphqlServers: [],
+
 }));
