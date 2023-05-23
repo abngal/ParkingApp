@@ -16,4 +16,6 @@ describe('Test Entrances Operation - Graphql', () => {
 		expect(result.error).toBeFalsy();
 		expect(result.data?.pgdb_findManyentrances?.length).toBe(2);
 	});
+
+	// TODO: test other operations, especially typescript ones ( not just graphql )
 });
