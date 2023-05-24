@@ -16,7 +16,7 @@
 
 # Zippark Parking APIs
 - Parking Start
-    - curl http://localhost:9991/operations/parking/mutations/StartParking?wg_api_hash=1fa113c3'  --data-raw '{"vehicleCode":"2W","entranceCode":"ENT01"}'
+    - curl http://localhost:9991/operations/parking/mutations/StartParking?wg_api_hash=1fa113c3'  --data-raw '{"vehicleCode":"2W","entranceCode":"E1"}'
 - Parking Exit
     - curl http://localhost:9991/operations/parking/mutations/FinishParking?wg_api_hash=1fa113c3'  --data-raw '{"parkingTransactionId":"2"}
     
