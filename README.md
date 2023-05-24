@@ -1,7 +1,7 @@
 # Zip Park : Parking Transactions
 
 - How to run:
-    - cd zippark && npm install && npm start 
+    - cd zippark && npm install && source .env && npm start 
     - wait for auto open on browser for localhost:3000 for the web ui for testing
 
 - Technologies Used
@@ -33,4 +33,4 @@
         - was not able to have time
 
 # Tests
-- cd zippark && npm test
+- cd zippark && source .env && npm test
