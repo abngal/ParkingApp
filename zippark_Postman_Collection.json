@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "e255f40b-8d27-46f5-83e9-e0d40c070536",
+		"name": "WunderGraph Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8644875"
+	},
+	"item": [
+		{
+			"name": "parking/queries",
+			"item": [
+				{
+					"name": "Parking Queries Entrances",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/parking/queries/Entrances",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"parking",
+								"queries",
+								"Entrances"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/Entrances",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"Entrances"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": {\n    \"pgdb_findManyentrances\": [\n      {\n        \"id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Invalid input",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/Entrances",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"Entrances"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"input\": {},\n  \"errors\": [\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    },\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Parking Queries Vehicle Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/parking/queries/VehicleTypes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"parking",
+								"queries",
+								"VehicleTypes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/VehicleTypes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"VehicleTypes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": {\n    \"pgdb_findManyvehicle_types\": [\n      {\n        \"id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"code\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Invalid input",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/VehicleTypes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"VehicleTypes"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"input\": {},\n  \"errors\": [\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    },\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Parking Queries Parking Rates And Relations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/parking/queries/ParkingRatesAndRelations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"parking",
+								"queries",
+								"ParkingRatesAndRelations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/ParkingRatesAndRelations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"ParkingRatesAndRelations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": {\n    \"pgdb_findManyparking_rates\": [\n      {\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"min_hours\": \"<integer>\",\n        \"created_at\": \"<string>\",\n        \"min_amount\": \"<integer>\",\n        \"vehicle_types\": {\n          \"id\": \"<integer>\",\n          \"code\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"variable_amount\": \"<integer>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"is_active\": \"<boolean>\",\n        \"min_hours\": \"<integer>\",\n        \"created_at\": \"<string>\",\n        \"min_amount\": \"<integer>\",\n        \"vehicle_types\": {\n          \"id\": \"<integer>\",\n          \"code\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        \"variable_amount\": \"<integer>\"\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Invalid input",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/ParkingRatesAndRelations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"ParkingRatesAndRelations"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"input\": {},\n  \"errors\": [\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    },\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Parking Queries Parking Transactions And Relations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/parking/queries/ParkingTransactionsAndRelations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"parking",
+								"queries",
+								"ParkingTransactionsAndRelations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/ParkingTransactionsAndRelations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"ParkingTransactionsAndRelations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": {\n    \"pgdb_findManyparking_transactions\": [\n      {\n        \"id\": \"<integer>\",\n        \"created_at\": \"<string>\",\n        \"vehicle_plate\": \"<string>\",\n        \"datetime_in\": \"<string>\",\n        \"parking_rates\": {\n          \"min_hours\": \"<integer>\",\n          \"min_amount\": \"<integer>\",\n          \"variable_amount\": \"<integer>\"\n        },\n        \"entrances\": {\n          \"code\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"amount\": \"<integer>\",\n        \"datetime_out\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"created_at\": \"<string>\",\n        \"vehicle_plate\": \"<string>\",\n        \"datetime_in\": \"<string>\",\n        \"parking_rates\": {\n          \"min_hours\": \"<integer>\",\n          \"min_amount\": \"<integer>\",\n          \"variable_amount\": \"<integer>\"\n        },\n        \"entrances\": {\n          \"code\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"amount\": \"<integer>\",\n        \"datetime_out\": \"<string>\"\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Invalid input",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/parking/queries/ParkingTransactionsAndRelations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"parking",
+										"queries",
+										"ParkingTransactionsAndRelations"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\",\n  \"input\": {},\n  \"errors\": [\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    },\n    {\n      \"propertyPath\": \"<string>\",\n      \"invalidValue\": {},\n      \"message\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "parking/mutations",
+			"item": [
+				{
+					"name": "Start Parking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9,fil;q=0.8,la;q=0.7"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Referer",
+								"value": "http://localhost:3000/"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-site"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "WG-SDK-Version",
+								"value": "0.149.1"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0",
+								"disabled": true
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\"",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"vehicleCode\":\"2W\",\"entranceCode\":\"ENT01\"}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/parking/mutations/StartParking?wg_api_hash=2708dc6a",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"parking",
+								"mutations",
+								"StartParking"
+							],
+							"query": [
+								{
+									"key": "wg_api_hash",
+									"value": "2708dc6a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FinishParking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9,fil;q=0.8,la;q=0.7"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Referer",
+								"value": "http://localhost:3000/"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-site"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "WG-SDK-Version",
+								"value": "0.149.1"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\""
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"parkingTransactionId\":\"1\"}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/parking/mutations/FinishParking?wg_api_hash=2708dc6a",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"parking",
+								"mutations",
+								"FinishParking"
+							],
+							"query": [
+								{
+									"key": "wg_api_hash",
+									"value": "2708dc6a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://zippark.wundergraph.dev/operations",
+			"type": "string"
+		}
+	]
+}
