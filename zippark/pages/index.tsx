@@ -30,7 +30,6 @@ const Home: NextPage = () => {
 	})
 
 	async function startParking(vCode: string, entranceCode: string) {
-		console.log('startParking() ....');
 		startParkingTransactionMutation.mutateAsync({
 			vehicleCode: vCode, // '2W'|'4W'
 			entranceCode: entranceCode, // '2W'|'4W'
@@ -42,7 +41,6 @@ const Home: NextPage = () => {
 	})	  
 
 	function finishParking(txnId: string) {
-		console.log('finishParking()');
 		finishParkingTransactionMutation.mutateAsync({
 			parkingTransactionId: txnId,
 		});

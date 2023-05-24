@@ -26,8 +26,6 @@ export default createOperation.mutation({
 		parkingTransactionId: z.string(),
 	}),
 	handler: async ({ input, operations }) => {
-		console.log("input", input);
-		// console.log("operations", operations);
 		/**
 		 * Compute total parking amount owed
 		 * 	- total = fixed amount + ( hours * variable amount) 
@@ -67,7 +65,6 @@ export default createOperation.mutation({
 		// (b) or add variable hours
 		if (hasVariableHours) {
 			const variableAmount = excessOverMinHours * txn.parking_rates?.variable_amount 
-			console.log("variableAmount", variableAmount);
 			totalAmount += variableAmount;
 		}
 

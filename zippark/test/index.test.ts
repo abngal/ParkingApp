@@ -11,7 +11,6 @@ describe('Test Entrances Operation - Graphql', () => {
 		const result = await wg.client().query({
 			operationName: 'parking/queries/Entrances',
 		});
-		console.log("result", result);
 
 		expect(result.error).toBeFalsy();
 		expect(result.data?.pgdb_findManyentrances?.length).toBe(2);
