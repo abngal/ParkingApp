@@ -58,6 +58,7 @@ export default createOperation.mutation({
 
 		let excessOverMinHours = timeDiffInHours - txn.parking_rates?.min_hours; 
 		excessOverMinHours = excessOverMinHours > 0 ? Math.abs(excessOverMinHours) : 0;
+		excessOverMinHours = Math.ceil(excessOverMinHours);
 		const hasVariableHours = ( excessOverMinHours > 0 );
 		let totalAmount = 0;
 		// (a) just the total fixed amount
@@ -75,7 +76,7 @@ export default createOperation.mutation({
 			}, 
 			data: {
 				datetime_out: new Date(Temporal.Now.plainDateTimeISO().toString()),
-				amount: Math.ceil(totalAmount),
+				amount: totalAmount,
 			}
 		};
 		const updated = await prisma.parking_transactions.update(updateParams);
