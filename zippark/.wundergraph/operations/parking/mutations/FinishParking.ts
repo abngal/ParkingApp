@@ -56,7 +56,8 @@ export default createOperation.mutation({
 		const temporalNow = Temporal.Now.plainDateTimeISO();
 		const timeDiffInHours: number = timeDiffToNow(txn.datetime_in.toISOString(), temporalNow);
 
-		const excessOverMinHours = Math.abs( timeDiffInHours - txn.parking_rates?.min_hours ); 
+		let excessOverMinHours = timeDiffInHours - txn.parking_rates?.min_hours; 
+		excessOverMinHours = excessOverMinHours > 0 ? Math.abs(excessOverMinHours) : 0;
 		const hasVariableHours = ( excessOverMinHours > 0 );
 		let totalAmount = 0;
 		// (a) just the total fixed amount
