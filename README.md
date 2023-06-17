@@ -27,4 +27,4 @@
 
 
 # Tests
-- cd zippark && source .env && npm test
+- `cd zippark && source .env && npm test`
