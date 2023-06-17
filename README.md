@@ -26,11 +26,5 @@
 [Prisma Schema for additional reference](zippark/prisma/schema.prisma)
 
 
-# Bonuses (not implemented):
-    - Deployment to AWS
-        - was not able to because of CORs error I was not able to have it working
-    - Gcash/Magpie integration
-        - was not able to have time
-
 # Tests
 - cd zippark && source .env && npm test
