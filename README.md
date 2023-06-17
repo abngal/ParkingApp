@@ -23,6 +23,7 @@
 # Database
     - live DATABASE_URL=postgresql://postgres:cXW6QReJqayzXR8@db.cohgsnixxmysypamfjnd.supabase.co:5432/postgres
 ![Alt text](ERD_parkingtransactions.png)
+
 [Prisma Schema for additional reference](zippark/prisma/schema.prisma)
 
 
