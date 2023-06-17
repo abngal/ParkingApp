@@ -9,7 +9,7 @@ const spaceX = introspect.graphql({
 
 const pgdb = introspect.postgresql({
 	apiNamespace: 'pgdb',
-	databaseURL: 'postgresql://postgres:cXW6QReJqayzXR8@db.cohgsnixxmysypamfjnd.supabase.co:5432/postgres',
+	databaseURL: 'postgresql://username:password:5432/postgres',
 });
 
 // configureWunderGraph emits the configuration
