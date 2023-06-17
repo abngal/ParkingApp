@@ -21,7 +21,7 @@
     -    `curl http://localhost:9991/operations/parking/mutations/FinishParking?wg_api_hash=1fa113c3'  --data-raw '{"parkingTransactionId":"2"}`
     
 # Database
-    - live DATABASE_URL=postgresql://postgres:cXW6QReJqayzXR8@db.cohgsnixxmysypamfjnd.supabase.co:5432/postgres
+    - live DATABASE_URL=postgresql:/username:password@db.cohgsnixxmysypamfjnd.supabase.co:5432/postgres -- the db credentials still available in history was already revoked minutes after this repo was moved from private to public
 ![Alt text](ERD_parkingtransactions.png)
 
 [Prisma Schema for additional reference](zippark/prisma/schema.prisma)
